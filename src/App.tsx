@@ -31,6 +31,8 @@ import { HashRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import './App.css';
 import siteConfig from './config/siteConfig';
 import SEOProposal from './pages/SEOProposal';
+import CaseStudyDetail from './pages/CaseStudyDetail';
+import Admin from './pages/Admin';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -785,9 +787,10 @@ function Home() {
 
           <div className="grid md:grid-cols-2 gap-4 sm:gap-6">
             {caseStudies.map((study, index) => (
-              <div 
+              <Link 
                 key={index} 
-                className={`case-card group relative overflow-hidden rounded-2xl cursor-pointer ${study.featured ? 'md:row-span-2' : ''}`}
+                to={`/case-study/${(study as any).slug}`}
+                className={`case-card block text-left group relative overflow-hidden rounded-2xl cursor-pointer ${study.featured ? 'md:row-span-2' : ''}`}
               >
                 <div className="absolute inset-0 bg-gradient-to-br from-zinc-800 to-zinc-900"></div>
                 <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent z-10"></div>
@@ -825,7 +828,7 @@ function Home() {
                     </div>
                   </div>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
         </div>
@@ -1103,6 +1106,8 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/seo-proposal" element={<SEOProposal />} />
+        <Route path="/case-study/:slug" element={<CaseStudyDetail />} />
+        <Route path="/admin" element={<Admin />} />
       </Routes>
     </Router>
   );
