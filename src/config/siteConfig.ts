@@ -80,7 +80,7 @@ export const siteConfig = {
   "about": {
     "paragraphs": [
       "Dynamic Digital Operations Manager and Full-Stack Web Developer with 3+ years of proven expertise in SEO optimization, team leadership, and digital operations, complemented by hands-on experience building secure, scalable web applications using Laravel, Next.js, and React. Successfully managed two operational branches and led cross-functional teams of 200+ professionals, while independently architecting and delivering full-stack platforms — from multi-vendor marketplaces to AI-powered booking systems. Committed to driving digital growth through data-driven strategies, clean code, and operational excellence.",
-      "Currently serving as Operation Manager (Technical SEO Specialist & WordPress Customization) at Future Minds Academy, where I oversee digital operations, website funnels, and process automation. I lead n8n-based operational automations and build robust full-stack solutions to optimize system and team performance."
+      "Currently serving as Operation Manager at Future Minds Academy, where I oversee digital operations, website funnels, and process automation. I lead n8n-based operational automations and build robust full-stack solutions to optimize system and team performance."
     ],
     "quickStats": [
       {
