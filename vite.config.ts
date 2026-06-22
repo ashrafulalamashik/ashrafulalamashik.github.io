@@ -14,7 +14,7 @@ export default defineConfig(({ command }) => {
   }
 
   return {
-    base: './',
+    base: command === 'build' ? '/portfolio/' : '/',
     plugins,
     resolve: {
       alias: {
