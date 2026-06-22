@@ -5,7 +5,7 @@ export const siteConfig = {
   "personal": {
     "name": "Ashraful Alam Ashik",
     "shortName": "Ashik",
-    "initials": "AA",
+    "initials": "A",
     "role": "Digital Operations Manager & Full-Stack Web Developer",
     "tagline": "Full-Stack Development · Digital Operations & SEO · Automation",
     "location": "Birgram, Kharna, Shajahanpur, Bogura-5800, Bangladesh",
@@ -27,8 +27,24 @@ export const siteConfig = {
         "platform": "LinkedIn",
         "url": "https://www.linkedin.com/in/ashraful-alam-ashik/",
         "icon": "Linkedin"
+      },
+      {
+        "platform": "Facebook",
+        "url": "https://www.facebook.com/mdashrafulalamashik",
+        "icon": "Facebook"
+      },
+      {
+        "platform": "GitHub",
+        "url": "https://github.com/ashrafulalamashik/",
+        "icon": "Github"
+      },
+      {
+        "platform": "Telegram",
+        "url": "https://t.me/alamashik17",
+        "icon": "Send"
       }
-    ]
+    ],
+    "title": "Digital Operations Manager & Full-Stack Web Developer"
   },
   "hero": {
     "typewriterTexts": [
@@ -57,7 +73,7 @@ export const siteConfig = {
       }
     ],
     "metadata": [
-      "Bogura-5800, Bangladesh",
+      "Learner-oriented",
       "3+ Years Experience"
     ]
   },
@@ -189,7 +205,7 @@ export const siteConfig = {
       "issuer": "Institute of Technical & IT",
       "year": "2019",
       "icon": "office",
-      "image": ""
+      "image": "Computer Cirtf.jpg"
     }
   ],
   "education": [
@@ -755,17 +771,6 @@ export const siteConfig = {
       ]
     },
     {
-      "title": "WordPress & Web",
-      "icon": "Globe",
-      "items": [
-        "WordPress",
-        "PHP Customization",
-        "HTML/CSS",
-        "JavaScript",
-        "Landing Page Design"
-      ]
-    },
-    {
       "title": "Web & Software Dev",
       "icon": "Code",
       "items": [
@@ -775,7 +780,12 @@ export const siteConfig = {
         "Secure Auth & RBAC",
         "Git & GitHub Control",
         "n8n Workflow Automation",
-        "AI Integration (VAPI.ai)"
+        "AI Integration (VAPI.ai)",
+        "HTML/CSS",
+        "PHP Customization",
+        "JavaScript",
+        "WordPress",
+        "Landing Page Design"
       ]
     },
     {

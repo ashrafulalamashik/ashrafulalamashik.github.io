@@ -221,6 +221,10 @@ export default function Admin() {
         plans: p.plans || [],
         paymentTerms: p.paymentTerms || []
       }));
+      // Ensure personal.title is initialized with personal.role if missing
+      if (data.personal && !data.personal.title && data.personal.role) {
+        data.personal.title = data.personal.role;
+      }
       setConfig(data);
     } catch (err: any) {
       setErrorMessage(err.message);
@@ -313,14 +317,17 @@ export default function Admin() {
     setSuccessMessage('');
     setPublishResult(null);
 
-    // Basic frontend checks before sending
-    if (!config.personal.name.trim() || !config.personal.title.trim()) {
-      setErrorMessage('Name and Title in General Info are required.');
-      setIsLoading(false);
-      return;
-    }
-
     try {
+      // Sync title to role for backward compatibility with siteConfig
+      if (config.personal) {
+        config.personal.role = config.personal.title || '';
+      }
+
+      // Basic frontend checks before sending
+      if (!config.personal?.name?.trim() || !config.personal?.title?.trim()) {
+        throw new Error('Name and Title in General Info are required.');
+      }
+
       const res = await fetch('/api/admin/save-config', {
         method: 'POST',
         headers: {
@@ -1179,6 +1186,7 @@ export default function Admin() {
                                     <option value="Github">🐙 GitHub</option>
                                     <option value="Facebook">📘 Facebook</option>
                                     <option value="Twitter">🐦 Twitter / X</option>
+                                    <option value="Send">✈️ Telegram</option>
                                     <option value="Youtube">🎬 YouTube</option>
                                     <option value="Instagram">📷 Instagram</option>
                                     <option value="Globe">🌐 Website / Other</option>

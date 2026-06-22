@@ -32,10 +32,19 @@ import {
   Facebook,
   Twitter,
   Youtube,
-  Instagram
+  Instagram,
+  Send
 } from 'lucide-react';
 import { HashRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import './App.css';
+import { 
+  Carousel, 
+  CarouselContent, 
+  CarouselItem, 
+  CarouselPrevious, 
+  CarouselNext,
+  type CarouselApi
+} from './components/ui/carousel';
 import siteConfig from './config/siteConfig';
 
 // Lazy-load page components for better initial load performance
@@ -68,6 +77,9 @@ const renderSocialIcon = (iconName: string) => {
       return <Youtube size={20} />;
     case 'instagram':
       return <Instagram size={20} />;
+    case 'telegram':
+    case 'send':
+      return <Send size={20} />;
     default:
       return <Globe size={20} />;
   }
@@ -345,6 +357,18 @@ function Home() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [cvModalOpen, setCvModalOpen] = useState(false);
   const [selectedServicePricing, setSelectedServicePricing] = useState<any>(null);
+  const [activeCertImage, setActiveCertImage] = useState<string | null>(null);
+  const [emblaApi, setEmblaApi] = useState<CarouselApi | null>(null);
+
+  useEffect(() => {
+    if (!emblaApi) return;
+    
+    const interval = setInterval(() => {
+      emblaApi.scrollNext();
+    }, 3000); // Auto-scroll every 3 seconds
+    
+    return () => clearInterval(interval);
+  }, [emblaApi]);
   const mainRef = useRef<HTMLDivElement>(null);
   const heroRef = useRef<HTMLDivElement>(null);
   const aboutRef = useRef<HTMLDivElement>(null);
@@ -1058,41 +1082,68 @@ function Home() {
             </p>
           </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
-            {certifications.map((cert, index) => (
-              <div key={index} className="cert-card group bg-gradient-to-br from-zinc-900 to-zinc-950 border border-zinc-800 rounded-2xl p-4 hover:border-[#22C55E]/50 transition-all duration-300 relative overflow-hidden flex flex-col justify-between">
-                <div className="absolute inset-0 bg-gradient-to-br from-[#22C55E]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                <div className="relative z-10">
-                  <div className="w-full h-32 bg-zinc-950 rounded-xl overflow-hidden mb-4 border border-zinc-800 relative flex items-center justify-center">
+          <div className="relative px-0 md:px-12">
+            <Carousel 
+              setApi={setEmblaApi}
+              opts={{ align: "start", loop: true }}
+              className="w-full"
+            >
+              <CarouselContent className="-ml-4 sm:-ml-6">
+                {certifications.map((cert, index) => (
+                  <CarouselItem key={index} className="pl-4 sm:pl-6 basis-full sm:basis-1/2 lg:basis-1/3">
                     {cert.image ? (
-                      <img 
-                        src={cert.image} 
-                        alt={cert.title} 
-                        className="w-full h-full object-cover group-hover:scale-105 transition-all duration-300 cursor-zoom-in"
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          window.open(cert.image, '_blank');
-                        }}
-                      />
+                      <div 
+                        className="cert-card group bg-zinc-950 border border-zinc-800 hover:border-[#22C55E]/40 rounded-2xl overflow-hidden transition-all duration-300 relative aspect-[4/3] w-full flex items-center justify-center cursor-pointer"
+                        onClick={() => setActiveCertImage(cert.image)}
+                      >
+                        <img 
+                          src={cert.image} 
+                          alt={cert.title} 
+                          className="w-full h-full object-contain group-hover:scale-105 transition-all duration-500"
+                        />
+                        
+                        {/* Hover Overlay */}
+                        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/90 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-5 z-20">
+                          <div className="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300 space-y-1">
+                            <span className="inline-block px-2.5 py-0.5 bg-[#22C55E]/10 border border-[#22C55E]/30 text-[#22C55E] rounded-full text-[9px] font-bold uppercase tracking-wider mb-1">
+                              {cert.year}
+                            </span>
+                            <h3 className="text-sm sm:text-base font-bold text-white leading-tight line-clamp-2">
+                              {cert.title}
+                            </h3>
+                            <p className="text-zinc-400 text-xs">
+                              {cert.issuer}
+                            </p>
+                            <div className="pt-2 border-t border-zinc-800/60 mt-2 flex justify-between items-center">
+                              <span className="text-[10px] text-zinc-500 group-hover:text-[#22C55E] transition-colors flex items-center gap-1 font-medium">
+                                <ExternalLink size={10} /> Click to Zoom
+                              </span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
                     ) : (
-                      <div className="w-full h-full bg-gradient-to-br from-[#22C55E]/15 to-[#22C55E]/5 flex items-center justify-center">
-                        <Medal className="text-[#22C55E]" size={32} />
+                      <div className="cert-card group bg-gradient-to-br from-zinc-900 to-zinc-950 border border-zinc-800 hover:border-[#22C55E]/30 rounded-2xl p-5 transition-all duration-300 relative overflow-hidden flex flex-col justify-between aspect-[4/3] w-full">
+                        <div className="absolute inset-0 bg-gradient-to-br from-[#22C55E]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                        <div className="relative z-10 flex-1 flex flex-col">
+                          <div className="w-10 h-10 bg-[#22C55E]/10 border border-[#22C55E]/20 rounded-xl flex items-center justify-center mb-3 text-[#22C55E]">
+                            <Medal size={20} />
+                          </div>
+                          <h3 className="text-sm sm:text-base font-bold mb-1 group-hover:text-[#22C55E] transition-colors line-clamp-2">{cert.title}</h3>
+                          <p className="text-zinc-400 text-xs sm:text-sm">{cert.issuer}</p>
+                        </div>
+                        <div className="relative z-10 mt-3 pt-3 border-t border-zinc-800/60 flex justify-between items-center">
+                          <span className="text-[#22C55E] text-xs sm:text-sm font-semibold">{cert.year}</span>
+                          <span className="text-[10px] text-zinc-600 italic">Verified Badge</span>
+                        </div>
                       </div>
                     )}
-                  </div>
-                  <h3 className="text-sm sm:text-base font-semibold mb-1.5 group-hover:text-[#22C55E] transition-colors line-clamp-2">{cert.title}</h3>
-                  <p className="text-zinc-400 text-xs sm:text-sm mb-1">{cert.issuer}</p>
-                </div>
-                <div className="relative z-10 mt-2 flex justify-between items-center">
-                  <span className="text-[#22C55E] text-xs sm:text-sm font-medium">{cert.year}</span>
-                  {cert.image && (
-                    <span className="text-[10px] text-zinc-500 group-hover:text-[#22C55E] transition-colors flex items-center gap-1">
-                      View <ExternalLink size={10} />
-                    </span>
-                  )}
-                </div>
-              </div>
-            ))}
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+              <CarouselPrevious className="hidden md:flex -left-4 border-zinc-800 hover:bg-[#22C55E]/10 hover:text-[#22C55E] bg-zinc-950 text-white cursor-pointer" />
+              <CarouselNext className="hidden md:flex -right-4 border-zinc-800 hover:bg-[#22C55E]/10 hover:text-[#22C55E] bg-zinc-950 text-white cursor-pointer" />
+            </Carousel>
           </div>
 
           {/* Education */}
@@ -1135,7 +1186,7 @@ function Home() {
           </div>
 
           {/* Skill Categories */}
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6 mb-10">
+          <div className="flex flex-wrap justify-center gap-6 mb-10 w-full">
             {(siteConfig.skillCategories || [
               {
                 title: "SEO",
@@ -1173,19 +1224,21 @@ function Home() {
             ]).map((category: any, idx: number) => (
               <div 
                 key={idx} 
-                className={`bg-zinc-900/50 border border-zinc-800 rounded-xl p-5 ${
-                  category.title === 'Web & Software Dev' ? 'border-[#22C55E]/20 hover:border-[#22C55E]/40 transition-colors' : ''
+                className={`bg-zinc-900/50 border border-zinc-800 rounded-xl p-5 flex flex-col items-center text-center hover:border-[#22C55E]/30 transition-all duration-300 grow basis-[210px] max-w-[265px] ${
+                  category.title === 'Web & Software Dev' ? 'border-[#22C55E]/20 hover:border-[#22C55E]/40' : ''
                 }`}
               >
-                <div className="flex items-center gap-2 mb-4">
+                <div className="flex items-center justify-center gap-2 mb-4 w-full">
                   {renderCategoryIcon(category.icon)}
-                  <h3 className="font-semibold">{category.title}</h3>
+                  <h3 className="font-semibold text-white">{category.title}</h3>
                 </div>
-                <ul className="space-y-2 text-sm text-zinc-400">
-                  {category.items.map((item: string, itemIdx: number) => (
-                    <li key={itemIdx}>{item}</li>
-                  ))}
-                </ul>
+                <div className="flex-1 flex flex-col justify-center w-full">
+                  <ul className="space-y-2 text-sm text-zinc-400 text-center">
+                    {category.items.map((item: string, itemIdx: number) => (
+                      <li key={itemIdx} className="hover:text-[#22C55E] transition-colors duration-200">{item}</li>
+                    ))}
+                  </ul>
+                </div>
               </div>
             ))}
           </div>
@@ -1371,6 +1424,27 @@ function Home() {
           </div>
         );
       })()}
+      {/* Certificate Lightbox Modal */}
+      {activeCertImage && (
+        <div 
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/95 backdrop-blur-md p-4 md:p-10 transition-all duration-300 animate-fade-in"
+          onClick={() => setActiveCertImage(null)}
+        >
+          <button 
+            className="absolute top-6 right-6 w-12 h-12 rounded-full bg-zinc-900 border border-zinc-800 flex items-center justify-center text-zinc-400 hover:text-white transition-colors cursor-pointer shadow-lg"
+            onClick={() => setActiveCertImage(null)}
+            title="Close"
+          >
+            <X size={24} />
+          </button>
+          <img 
+            src={activeCertImage} 
+            alt="Certificate Zoomed" 
+            className="max-w-full max-h-[85vh] md:max-h-[90vh] object-contain rounded-lg border border-zinc-800 shadow-2xl animate-scale-up"
+            onClick={(e) => e.stopPropagation()}
+          />
+        </div>
+      )}
     </div>
   );
 }
