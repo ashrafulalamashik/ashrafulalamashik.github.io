@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState, useCallback } from 'react';
+import { useEffect, useRef, useState, useCallback, lazy, Suspense } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { 
@@ -37,9 +37,11 @@ import {
 import { HashRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import './App.css';
 import siteConfig from './config/siteConfig';
-import SEOProposal from './pages/SEOProposal';
-import CaseStudyDetail from './pages/CaseStudyDetail';
-import Admin from './pages/Admin';
+
+// Lazy-load page components for better initial load performance
+const SEOProposal = lazy(() => import('./pages/SEOProposal'));
+const CaseStudyDetail = lazy(() => import('./pages/CaseStudyDetail'));
+const Admin = lazy(() => import('./pages/Admin'));
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -116,7 +118,11 @@ function ParticleBackground() {
     resizeCanvas();
     window.addEventListener('resize', resizeCanvas);
 
-    const particleCount = Math.min(50, Math.floor(window.innerWidth / 30));
+    // Responsive particle count: fewer on mobile for performance
+    const isMobile = window.innerWidth < 768;
+    const particleCount = isMobile 
+      ? Math.min(20, Math.floor(window.innerWidth / 40))
+      : Math.min(50, Math.floor(window.innerWidth / 30));
     particlesRef.current = Array.from({ length: particleCount }, () => ({
       x: Math.random() * canvas.width,
       y: Math.random() * canvas.height,
@@ -946,7 +952,7 @@ function Home() {
                       <span key={tIndex} className="text-xs bg-zinc-800 text-zinc-300 px-3 py-1.5 rounded-full">{tag}</span>
                     ))}
                   </div>
-                  {service.showPricing && (
+                  {service.showPricing && (service as any).proposalId !== 'none' && (
                     <button
                       onClick={() => setSelectedServicePricing(service)}
                       className="w-full sm:w-auto px-4 py-2 text-xs font-semibold bg-zinc-800 hover:bg-[#22C55E] text-zinc-200 hover:text-black rounded-xl border border-zinc-700/60 hover:border-[#22C55E] flex items-center justify-center gap-1.5 transition-all active:scale-95 group/btn cursor-pointer"
@@ -1386,6 +1392,35 @@ function App() {
       metaDesc.setAttribute('content', siteConfig.siteIdentity.description);
     }
 
+    // Dynamic OG & Twitter Card meta tags
+    const siteTitle = siteConfig.siteIdentity?.title || 'Portfolio';
+    const siteDesc = siteConfig.siteIdentity?.description || '';
+    const profileImg = siteConfig.personal?.profileImgPath || siteConfig.siteIdentity?.faviconPath || '/profile.png';
+    const ogImagePath = profileImg.startsWith('http') ? profileImg : `${profileImg.startsWith('/') ? '' : '/'}${profileImg}`;
+
+    const setMeta = (selector: string, attr: string, value: string) => {
+      let el = document.querySelector(selector);
+      if (!el) {
+        el = document.createElement('meta');
+        const [attrName, attrVal] = selector.match(/\[(.+?)="(.+?)"\]/)?.slice(1) || [];
+        if (attrName && attrVal) el.setAttribute(attrName, attrVal);
+        document.head.appendChild(el);
+      }
+      el.setAttribute(attr, value);
+    };
+
+    // Open Graph
+    setMeta('meta[property="og:title"]', 'content', siteTitle);
+    setMeta('meta[property="og:description"]', 'content', siteDesc);
+    setMeta('meta[property="og:image"]', 'content', ogImagePath);
+    setMeta('meta[property="og:type"]', 'content', 'website');
+
+    // Twitter Card
+    setMeta('meta[name="twitter:card"]', 'content', 'summary_large_image');
+    setMeta('meta[name="twitter:title"]', 'content', siteTitle);
+    setMeta('meta[name="twitter:description"]', 'content', siteDesc);
+    setMeta('meta[name="twitter:image"]', 'content', ogImagePath);
+
     // Set Favicon
     let favicon = document.getElementById('favicon-link') as HTMLLinkElement | null;
     if (!favicon) {
@@ -1424,15 +1459,27 @@ function App() {
     }
   }, [siteConfig.siteIdentity?.title, siteConfig.siteIdentity?.description, siteConfig.siteIdentity?.faviconPath]);
 
+  // Loading fallback for lazy-loaded pages
+  const PageLoader = () => (
+    <div className="min-h-screen bg-[#0A0A0A] flex items-center justify-center">
+      <div className="flex flex-col items-center gap-4">
+        <div className="w-10 h-10 border-2 border-[#22C55E] border-t-transparent rounded-full animate-spin" />
+        <span className="text-zinc-500 text-sm">Loading...</span>
+      </div>
+    </div>
+  );
+
   return (
     <Router>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/seo-proposal" element={<SEOProposal />} />
-        <Route path="/proposal/:id" element={<SEOProposal />} />
-        <Route path="/case-study/:slug" element={<CaseStudyDetail />} />
-        <Route path="/admin" element={<Admin />} />
-      </Routes>
+      <Suspense fallback={<PageLoader />}>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/seo-proposal" element={<SEOProposal />} />
+          <Route path="/proposal/:id" element={<SEOProposal />} />
+          <Route path="/case-study/:slug" element={<CaseStudyDetail />} />
+          <Route path="/admin" element={<Admin />} />
+        </Routes>
+      </Suspense>
     </Router>
   );
 }

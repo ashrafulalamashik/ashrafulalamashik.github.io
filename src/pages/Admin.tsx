@@ -948,11 +948,9 @@ export default function Admin() {
                                   />
                                 </div>
                                 <div className="space-y-1">
-                                  <label className="text-[10px] text-zinc-500 font-semibold uppercase">Icon Class (e.g. Github, Linkedin, MessageCircle)</label>
-                                  <input 
-                                    type="text" 
-                                    value={soc.icon} 
-                                    placeholder="e.g. Github"
+                                  <label className="text-[10px] text-zinc-500 font-semibold uppercase">Icon</label>
+                                  <select 
+                                    value={soc.icon || 'Globe'} 
                                     onChange={(e) => {
                                       const next = [...config.personal.socials];
                                       next[idx].icon = e.target.value;
@@ -961,8 +959,17 @@ export default function Admin() {
                                         personal: { ...p.personal, socials: next }
                                       }));
                                     }}
-                                    className="w-full bg-zinc-900 border border-zinc-850 rounded px-2.5 py-1.5 text-xs text-white"
-                                  />
+                                    className="w-full bg-zinc-900 border border-zinc-850 rounded px-2.5 py-1.5 text-xs text-white cursor-pointer outline-none focus:border-[#22C55E] transition-colors"
+                                  >
+                                    <option value="MessageCircle">💬 WhatsApp</option>
+                                    <option value="Linkedin">🔗 LinkedIn</option>
+                                    <option value="Github">🐙 GitHub</option>
+                                    <option value="Facebook">📘 Facebook</option>
+                                    <option value="Twitter">🐦 Twitter / X</option>
+                                    <option value="Youtube">🎬 YouTube</option>
+                                    <option value="Instagram">📷 Instagram</option>
+                                    <option value="Globe">🌐 Website / Other</option>
+                                  </select>
                                 </div>
                               </div>
                               <button 
@@ -1843,20 +1850,28 @@ export default function Admin() {
                               {serv.showPricing && (
                                 <div className="sm:col-span-3 space-y-1">
                                   <label className="text-[10px] text-zinc-500 font-semibold uppercase">Linked Proposal Template</label>
-                                  <select
-                                    value={serv.proposalId || ''}
-                                    onChange={(e) => {
-                                      const next = [...config.services];
-                                      next[idx].proposalId = e.target.value;
-                                      setConfig((p: any) => ({ ...p, services: next }));
-                                    }}
-                                    className="w-full bg-zinc-900 border border-zinc-850 rounded px-2.5 py-1.5 text-xs text-white cursor-pointer outline-none"
-                                  >
-                                    <option value="">Auto-select by Service Title / Fallback</option>
-                                    {(config.proposals || []).map((p: any) => (
-                                      <option key={p.id} value={p.id}>{p.title} ({p.id})</option>
-                                    ))}
-                                  </select>
+                                  {(config.proposals || []).length === 0 ? (
+                                    <div className="flex items-center gap-2 px-3 py-2 bg-amber-500/10 border border-amber-500/30 rounded-lg">
+                                      <AlertCircle size={14} className="text-amber-400 flex-shrink-0" />
+                                      <span className="text-xs text-amber-300">No proposals created yet. Go to the <strong>Proposal &amp; Nav</strong> tab to create one first.</span>
+                                    </div>
+                                  ) : (
+                                    <select
+                                      value={serv.proposalId || ''}
+                                      onChange={(e) => {
+                                        const next = [...config.services];
+                                        next[idx].proposalId = e.target.value;
+                                        setConfig((p: any) => ({ ...p, services: next }));
+                                      }}
+                                      className="w-full bg-zinc-900 border border-zinc-850 rounded px-2.5 py-1.5 text-xs text-white cursor-pointer outline-none focus:border-[#22C55E] transition-colors"
+                                    >
+                                      <option value="">Auto-select by Service Title / Fallback</option>
+                                      <option value="none">🚫 None — No pricing popup</option>
+                                      {(config.proposals || []).map((p: any) => (
+                                        <option key={p.id} value={p.id}>{p.title} ({p.id})</option>
+                                      ))}
+                                    </select>
+                                  )}
                                 </div>
                               )}
                             </div>

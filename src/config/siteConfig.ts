@@ -11,6 +11,7 @@ export const siteConfig = {
     "location": "Birgram, Kharna, Shajahanpur, Bogura-5800, Bangladesh",
     "phone": "+8801737940250",
     "email": "aa.ashik777@gmail.com",
+    "siteUrl": "https://ashrafulalamashik.github.io/portfolio",
     "whatsapp": "http://wa.me/+8801737940250",
     "linkedin": "https://www.linkedin.com/in/ashraful-alam-ashik/",
     "experience": "3+",
