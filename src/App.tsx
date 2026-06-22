@@ -1051,7 +1051,7 @@ function Home() {
                   <div>
                     <p className="text-zinc-500 text-xs uppercase tracking-wider mb-2">Results</p>
                     <div className="flex flex-wrap items-center gap-2">
-                      {study.results.map((result, rIndex) => (
+                      {study.results?.map((result, rIndex) => (
                         <span key={rIndex} className="flex items-center gap-1.5 bg-zinc-800/50 px-3 py-1.5 rounded-full text-xs text-zinc-300">
                           <Check size={12} className="text-[#22C55E]" />
                           {result}

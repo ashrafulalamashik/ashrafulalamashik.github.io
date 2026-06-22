@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 Disallow: /api/
-Sitemap: https://ashrafulalamashik.github.io/portfolio/sitemap.xml
+Sitemap: https://ashrafulalamashik.github.io/sitemap.xml

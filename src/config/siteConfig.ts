@@ -11,7 +11,7 @@ export const siteConfig = {
     "location": "Birgram, Kharna, Shajahanpur, Bogura-5800, Bangladesh",
     "phone": "+8801737940250",
     "email": "aa.ashik777@gmail.com",
-    "siteUrl": "https://ashrafulalamashik.github.io/portfolio",
+    "siteUrl": "https://ashrafulalamashik.github.io",
     "whatsapp": "http://wa.me/+8801737940250",
     "linkedin": "https://www.linkedin.com/in/ashraful-alam-ashik/",
     "experience": "3+",
@@ -383,6 +383,110 @@ export const siteConfig = {
         "High scalability and low latency due to extensive Redis caching and Cloudflare R2 offloading.",
         "Robust client-side protection blocking price, quantity, and payload modifications through strict server checks."
       ]
+    },
+    {
+      "slug": "jonoshongog-portal",
+      "image": "",
+      "category": "CIVIC TECH & FULL-STACK",
+      "title": "জনসংযোগ ২৪/৭: MP Constituency Engagement Portal",
+      "subtitle": "A secure, bilingual civic tech platform connecting an elected MP with thousands of constituents in real time",
+      "problem": "Constituents of Cumilla-10 had no digital channel to reach their MP — complaints were lost in paper trails, development project status was opaque, and official DO Letters were inaccessible to the public.",
+      "solution": "Built a bilingual (Bangla/English) full-stack civic portal with 24/7 complaint, suggestion, and idea submission, real-time Telegram notifications, transparent project tracking, and public DO Letter access — secured with HMAC-SHA256 signed sessions.",
+      "results": [
+        "24/7 digital access for thousands of constituents",
+        "Real-time Telegram alerts to MP's team on every submission",
+        "Critical auth vulnerability found and fixed (HMAC-SHA256)",
+        "Full project & DO Letter transparency for public accountability"
+      ],
+      "role": "Lead Full-Stack Developer & Security Auditor",
+      "status": "Completed (Production)",
+      "completionProgress": {
+        "backend": 100,
+        "frontend": 100
+      },
+      "techStack": {
+        "frontend": [
+          "Next.js 16 (App Router)",
+          "React 19",
+          "TypeScript",
+          "Tailwind CSS 4"
+        ],
+        "backend": [
+          "PostgreSQL (Neon serverless)",
+          "Prisma ORM"
+        ],
+        "infrastructure": [
+          "Cloudinary (Image & DO Letter Storage)",
+          "Telegram Bot API (Real-time alerts)",
+          "Web Crypto API (HMAC-SHA256 Sessions)",
+          "Hostinger Node.js App Hosting",
+          "GitHub Actions CI/CD"
+        ]
+      },
+      "summary": "জনসংযোগ ২৪/৭ is a production civic engagement portal built for MP Mobashwer Alam Bhuiyan of Cumilla-10. The platform gives constituents a structured, always-available digital channel to submit complaints, suggestions, and development ideas — while giving the MP's team a real-time, secure admin dashboard to manage and respond. Every submission instantly notifies the MP's team via Telegram, and all active development projects — including official Government DO Letters — are publicly visible for full transparency.",
+      "challenge": {
+        "description": "The most critical issue discovered during a full security audit was that the admin session cookie stored plain unsigned JSON — meaning anyone with browser DevTools could forge a SUPER_ADMIN session in seconds. This was a Broken Access Control vulnerability (OWASP #1).",
+        "objectives": [
+          "Design a stateless HMAC-SHA256 signed token system using the Web Crypto API compatible with Node.js route handlers and Edge middleware.",
+          "Implement fail-closed behavior on any missing, expired, or tampered token.",
+          "Create a secure, always-available digital channel to submit complaints, suggestions, and development ideas."
+        ]
+      },
+      "architectureAndSecurity": {
+        "title": "Security & Architecture Highlights",
+        "points": [
+          {
+            "title": "HMAC-SHA256 Signed Session Tokens",
+            "description": "Replaced forgeable plain JSON cookies using Web Crypto API, featuring an 8-hour session TTL with embedded exp claim for zero DB lookup per request."
+          },
+          {
+            "title": "Fail-Closed Behavior & Secrets",
+            "description": "Implemented strict fail-closed security where missing SESSION_SECRET environment variables prevent the server from starting."
+          },
+          {
+            "title": "Magic-Byte File Validation",
+            "description": "Implemented magic-byte file signature validation on all uploads to prevent disguised executable uploads (rather than simple MIME or extension checking)."
+          },
+          {
+            "title": "API Defenses & Rate Limiting",
+            "description": "Added rate limiting on public submission endpoints (OWASP-aligned, 10 uploads/hr cap) and Zod input validation on all API routes."
+          }
+        ]
+      },
+      "keyFeatures": [
+        {
+          "title": "Bilingual Interface",
+          "description": "Bilingual interface (Bangla/English) with dynamic language switching for full accessibility."
+        },
+        {
+          "title": "Constituent Submissions",
+          "description": "Three submission types: complaints, suggestions, and development ideas with unique tracking IDs (CMP-/SUG-/IDA- prefixes)."
+        },
+        {
+          "title": "File Upload Support",
+          "description": "File upload support on all submission forms, uploading images securely to Cloudinary."
+        },
+        {
+          "title": "Real-Time Telegram Alerts",
+          "description": "Real-time Telegram Bot notifications with formatted submission details sent instantly to the MP's team."
+        },
+        {
+          "title": "Admin Dashboard",
+          "description": "Admin dashboard to manage submissions, update statuses, and respond to constituents."
+        },
+        {
+          "title": "Projects & DO Letter Transparency",
+          "description": "Public projects page for active development work and official government DO Letters publicly linked."
+        }
+      ],
+      "outcomes": [
+        "24/7 digital access for thousands of constituents of Cumilla-10",
+        "Real-time Telegram alerts to MP's team on every submission (~0s delay)",
+        "Critical auth vulnerability found and fixed (HMAC-SHA256)",
+        "Full project & DO Letter transparency for public accountability"
+      ],
+      "featured": true,
+      "liveUrl": "https://comilla10.fuminds.com"
     },
     {
       "slug": "local-retail-seo",

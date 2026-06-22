@@ -397,7 +397,7 @@ export default function CaseStudyDetail() {
             <ShieldCheck className="text-[#22C55E]" size={22} /> {data.architectureAndSecurity.title}
           </h2>
           <div className="space-y-6">
-            {data.architectureAndSecurity.points.map((point, i) => (
+            {data.architectureAndSecurity.points.map((point: any, i) => (
               <div key={i} className="group bg-gradient-to-b from-zinc-900 to-zinc-950 border border-zinc-850 p-6 rounded-2xl hover:border-[#22C55E]/30 transition-all duration-300">
                 <h3 className="text-base sm:text-lg font-bold mb-2 text-[#22C55E] flex items-center gap-2">
                   <Terminal size={16} /> {point.title}
