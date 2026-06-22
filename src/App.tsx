@@ -758,7 +758,7 @@ function Home() {
       <section ref={aboutRef} id="about" className="min-h-screen flex items-center py-20 sm:py-32 px-4 sm:px-6 lg:px-8 relative">
         <span className="watermark top-1/2 right-0 -translate-y-1/2 translate-x-1/3">02</span>
         <div className="about-content max-w-6xl mx-auto w-full relative z-10">
-          <div className="grid md:grid-cols-2 gap-8 sm:gap-16 items-center">
+          <div className="grid md:grid-cols-2 gap-8 sm:gap-16 items-start">
             <div>
               <span className="inline-block px-4 py-1.5 bg-[#22C55E]/10 border border-[#22C55E]/30 rounded-full text-[#22C55E] text-sm font-medium mb-4">
                 Who I Am
