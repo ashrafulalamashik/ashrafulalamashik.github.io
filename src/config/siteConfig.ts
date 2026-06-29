@@ -176,6 +176,17 @@ export const siteConfig = {
         "PDF Generation",
         "Database Design"
       ]
+    },
+    {
+      "title": "Esports Tournament Platform",
+      "description": "Free Fire esports tournament portal with user registration, paid matches, bKash/Nagad wallet transactions, and a robust admin dashboard. Built with Next.js, Supabase, Zod, and Cloudinary.",
+      "tags": [
+        "Next.js",
+        "TypeScript",
+        "Supabase",
+        "PostgreSQL",
+        "Cloudinary"
+      ]
     }
   ],
   "certifications": [
@@ -641,6 +652,104 @@ export const siteConfig = {
         "Lead generation conversions rose by 220% due to clearer funnel designs.",
         "Mobile traffic engagement increased by 150%, boosting average session duration by 3x."
       ]
+    },
+    {
+      "slug": "esports-tournament-platform",
+      "image": "",
+      "category": "GAME TECH & NEXT.JS",
+      "title": "Esports Tournament Platform: Secure Free Fire Match Portal",
+      "subtitle": "A secure, low-latency Free Fire tournament portal with instant wallet management and role-based route protection.",
+      "problem": "Traditional esports portals suffer from slow slot updates, manual result processing delays, open vulnerabilities to duplicate registration, and vulnerable wallet systems.",
+      "solution": "Built a unified Next.js full-stack application featuring real-time Free Fire match booking, secure Supabase relational schema with transaction logic, JWT auth in cookies, and Cloudinary payment integration.",
+      "results": [
+        "100% Secure JWT Auth & Zod validations",
+        "Built-in transaction system with Cloudinary proof uploads",
+        "Supabase relational integrity preventing slot double-booking",
+        "100% server-side wallet balance validation"
+      ],
+      "featured": true,
+      "role": "Lead Full-Stack Web Developer",
+      "status": "In Progress (Running)",
+      "completionProgress": {
+        "backend": 100,
+        "frontend": 90
+      },
+      "techStack": {
+        "frontend": [
+          "Next.js 14 (App Router)",
+          "React 18",
+          "TypeScript",
+          "Tailwind CSS 3",
+          "Zustand"
+        ],
+        "backend": [
+          "Next.js API Routes",
+          "PostgreSQL (Supabase)",
+          "JWT & bcryptjs",
+          "Zod Validation"
+        ],
+        "infrastructure": [
+          "Cloudinary (Screenshot Storage)",
+          "Vercel Hosting",
+          "GitHub Actions"
+        ]
+      },
+      "summary": "This platform is a Free Fire Esports Tournament site — similar to hhhesports.com — where players can register, join paid matches, submit results, and withdraw prize money. The admin controls everything from a secure dashboard. Developed with a zero-trust approach, it runs entirely on a single Next.js codebase, matching professional esports tournament standards under a tight budget.",
+      "challenge": {
+        "description": "The client needed a responsive esports tournament hub with instant match updates, safe deposit/withdrawal processing using payment screenshots, and secure game rooms. The major challenge was designing a secure transactional database that prevents race conditions (such as two players booking the final available slot simultaneously) and secures wallet balances against client-side manipulation.",
+        "objectives": [
+          "Implement server-side wallet check before permitting match entry, preventing balance fraud.",
+          "Design a secure relational schema in Supabase with strict foreign keys and constraints to prevent double slot registration.",
+          "Enable secure deposit uploads using Cloudinary for screenshot proof processing."
+        ]
+      },
+      "architectureAndSecurity": {
+        "title": "Security & Relational DB Architecture",
+        "points": [
+          {
+            "title": "Zod Schema Input Validation",
+            "description": "Every API request (register, login, match creation, joins, wallet transaction submissions) undergoes strict Zod schema validation at the HTTP layer, discarding malformed requests instantly.",
+            "codeSnippet": "export const joinMatchSchema = z.object({\n  matchId: z.string().uuid(),\n  userUid: z.string().min(3).max(30)\n});"
+          },
+          {
+            "title": "Strict Cookie-Based JWT Auth & bcrypt",
+            "description": "User sessions are managed through JWTs stored in HTTP-only, SameSite=Strict cookies to block XSS and CSRF. User credentials are encrypted using bcrypt (12 rounds)."
+          },
+          {
+            "title": "Relational Data Integrity in Supabase",
+            "description": "Designed 5 tables (users, matches, participants, transactions, announcements) with strict foreign keys and cascading deletes. Unique composite constraints prevent a user from joining the same match multiple times."
+          },
+          {
+            "title": "Server-Side Balance & Slot Locking",
+            "description": "All wallet checks occur inside backend API routes. The system validates that the user balance is sufficient, locks the record, deducts the entry fee, increments the filled slots counter, and inserts the participant inside a single database transaction context."
+          }
+        ]
+      },
+      "keyFeatures": [
+        {
+          "title": "User Authentication & Game Profiles",
+          "description": "Allows registration and logins with secure credentials and storing game-specific identifiers (Free Fire UID)."
+        },
+        {
+          "title": "Match Registry & Room Disclosure",
+          "description": "Browse and register for upcoming matches. Sensitive details (Room ID and Room Password) are disclosed exclusively to authenticated participants."
+        },
+        {
+          "title": "Bkash/Nagad Wallet Integration",
+          "description": "Users submit deposit screenshots for admin approval and request withdrawals directly through their wallets."
+        },
+        {
+          "title": "Granular Admin Dashboard",
+          "description": "Admin panel to manage matches, approve deposits, enter results (crediting winners dynamically), ban/unban users, and broadcast announcements."
+        }
+      ],
+      "outcomes": [
+        "Delivered a production-ready, low-overhead esports application fitting the targeted budget.",
+        "Created a clean and maintainable folder structure separating public, protected, and admin views.",
+        "Zero-trust API security preventing balance manipulation and brute force attacks.",
+        "Integrated Cloudinary image uploads for smooth transaction proof management."
+      ],
+      "liveUrl": "https://hhhesports.com"
     }
   ],
   "skills": [
