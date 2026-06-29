@@ -20,7 +20,6 @@ import {
   Calendar,
   MapPin,
   GraduationCap,
-  FileText,
   ExternalLink,
   Target,
   BarChart3,
@@ -311,52 +310,9 @@ function FloatingStats() {
   );
 }
 
-// CV Modal Component
-function CVModal({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }) {
-  if (!isOpen) return null;
-
-  return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/90 backdrop-blur-sm">
-      <div className="bg-zinc-900 border border-zinc-800 rounded-2xl w-full max-w-5xl h-[90vh] flex flex-col">
-        <div className="flex items-center justify-between p-4 border-b border-zinc-800">
-          <h3 className="text-lg font-semibold flex items-center gap-2">
-            <FileText className="text-[#22C55E]" size={20} />
-            Professional CV - Ashraful Alam Ashik
-          </h3>
-          <div className="flex items-center gap-2">
-            <a
-              href={siteConfig.personal.cvPath}
-              download
-              className="flex items-center gap-2 px-4 py-2 bg-[#22C55E] text-white rounded-lg text-sm font-medium hover:bg-[#16A34A] transition-colors"
-            >
-              <ExternalLink size={16} />
-              Download CV
-            </a>
-            <button
-              onClick={onClose}
-              className="w-10 h-10 bg-zinc-800 rounded-lg flex items-center justify-center hover:bg-zinc-700 transition-colors"
-            >
-              <X size={20} />
-            </button>
-          </div>
-        </div>
-        <div className="flex-1 p-4 overflow-hidden">
-          <iframe
-            src={siteConfig.personal.cvPath}
-            className="w-full h-full rounded-lg"
-            title="CV Preview"
-          />
-        </div>
-      </div>
-    </div>
-  );
-}
-
 // Main Home Component
 function Home() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [cvModalOpen, setCvModalOpen] = useState(false);
-  const [selectedServicePricing, setSelectedServicePricing] = useState<any>(null);
   const [activeCertImage, setActiveCertImage] = useState<string | null>(null);
   const [emblaApi, setEmblaApi] = useState<CarouselApi | null>(null);
 
@@ -701,13 +657,6 @@ function Home() {
                   <MessageCircle size={18} />
                   Contact on WhatsApp
                 </a>
-                <button 
-                  onClick={() => setCvModalOpen(true)}
-                  className="flex items-center gap-2 bg-zinc-800 text-white px-6 py-3 sm:py-4 rounded-full font-medium hover:bg-zinc-700 transition-colors border border-zinc-700"
-                >
-                  <FileText size={18} />
-                  Review My CV
-                </button>
               </div>
               <div className="hero-meta mt-8 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 sm:gap-8 text-xs sm:text-sm text-zinc-500">
                 {((hero && hero.metadata) || []).map((meta: string) => (
@@ -793,15 +742,6 @@ function Home() {
                   <div className="text-zinc-400 text-sm">{about.quickStats[1].label}</div>
                 </div>
               </div>
-
-              <button
-                onClick={() => setCvModalOpen(true)}
-                className="flex items-center gap-2 text-[#22C55E] hover:text-white transition-colors font-medium"
-              >
-                <FileText size={18} />
-                Review My CV
-                <ArrowUpRight size={16} />
-              </button>
             </div>
           </div>
         </div>
@@ -978,14 +918,16 @@ function Home() {
                       <span key={tIndex} className="text-xs bg-zinc-800 text-zinc-300 px-3 py-1.5 rounded-full">{tag}</span>
                     ))}
                   </div>
-                  {service.showPricing && (service as any).proposalId !== 'none' && (
-                    <button
-                      onClick={() => setSelectedServicePricing(service)}
-                      className="w-full sm:w-auto px-4 py-2 text-xs font-semibold bg-zinc-800 hover:bg-[#22C55E] text-zinc-200 hover:text-black rounded-xl border border-zinc-700/60 hover:border-[#22C55E] flex items-center justify-center gap-1.5 transition-all active:scale-95 group/btn cursor-pointer"
+                  {service.showPricing && (service as any).proposalId && (service as any).proposalId !== 'none' && (
+                    <a
+                      href={`#/proposal/${(service as any).proposalId}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-full sm:w-auto px-4 py-2 text-xs font-semibold bg-zinc-800 hover:bg-[#22C55E] text-zinc-200 hover:text-black rounded-xl border border-zinc-700/60 hover:border-[#22C55E] flex items-center justify-center gap-1.5 transition-all active:scale-95 group/btn cursor-pointer inline-flex"
                     >
                       View Pricing & Details
                       <ArrowUpRight size={12} className="group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform" />
-                    </button>
+                    </a>
                   )}
                 </div>
               </div>
@@ -1312,13 +1254,6 @@ function Home() {
               <MessageCircle size={20} />
               Contact on WhatsApp
             </a>
-            <button
-              onClick={() => setCvModalOpen(true)}
-              className="group bg-zinc-800 text-white px-8 py-4 rounded-full font-medium flex items-center gap-2 text-base hover:bg-zinc-700 transition-all border border-zinc-700 hover:border-zinc-600"
-            >
-              <FileText size={20} />
-              Review My CV
-            </button>
           </div>
         </div>
       </section>
@@ -1369,61 +1304,9 @@ function Home() {
         </div>
       </footer>
 
-      {/* CV Modal */}
-      <CVModal isOpen={cvModalOpen} onClose={() => setCvModalOpen(false)} />
 
-      {/* Service Pricing Modal */}
-      {selectedServicePricing && (() => {
-        const linkedProposal = ((siteConfig as any).proposals || []).find(
-          (p: any) => p.serviceTitle === selectedServicePricing.title || p.id === (selectedServicePricing as any).proposalId
-        );
-        const targetProposalUrl = linkedProposal 
-          ? `/#/proposal/${linkedProposal.id}` 
-          : `/#/seo-proposal`;
 
-        return (
-          <div 
-            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/90 backdrop-blur-sm animate-fade-in"
-            onClick={() => setSelectedServicePricing(null)}
-          >
-            <div 
-              className="bg-zinc-900 border border-zinc-800 rounded-2xl w-full max-w-5xl h-[90vh] flex flex-col animate-scale-in"
-              onClick={(e) => e.stopPropagation()}
-            >
-              <div className="flex items-center justify-between p-4 border-b border-zinc-800">
-                <h3 className="text-lg font-semibold flex items-center gap-2 text-white">
-                  <FileText className="text-[#22C55E]" size={20} />
-                  Pricing Plans & Proposal - {selectedServicePricing.title}
-                </h3>
-                <div className="flex items-center gap-2">
-                  <a
-                    href={targetProposalUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-2 px-4 py-2 bg-[#22C55E] text-black rounded-lg text-sm font-semibold hover:bg-[#16A34A] transition-colors"
-                  >
-                    <ExternalLink size={16} />
-                    Open in New Tab
-                  </a>
-                  <button
-                    onClick={() => setSelectedServicePricing(null)}
-                    className="w-10 h-10 bg-zinc-800 rounded-lg flex items-center justify-center hover:bg-zinc-700 transition-colors text-white cursor-pointer"
-                  >
-                    <X size={20} />
-                  </button>
-                </div>
-              </div>
-              <div className="flex-1 p-4 bg-zinc-950/40">
-                <iframe
-                  src={targetProposalUrl}
-                  className="w-full h-full rounded-lg border border-zinc-800"
-                  title={`${selectedServicePricing.title} Proposal & Pricing`}
-                />
-              </div>
-            </div>
-          </div>
-        );
-      })()}
+
       {/* Certificate Lightbox Modal */}
       {activeCertImage && (
         <div 

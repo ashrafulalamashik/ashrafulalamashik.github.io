@@ -232,7 +232,8 @@ export const siteConfig = {
       ],
       "price": "",
       "pricingDetails": "",
-      "showPricing": false
+      "showPricing": true,
+      "proposalId": "web-dev-proposal"
     },
     {
       "title": "DevSecOps & Security Audits",
@@ -245,7 +246,8 @@ export const siteConfig = {
       ],
       "price": "",
       "pricingDetails": "",
-      "showPricing": false
+      "showPricing": true,
+      "proposalId": "security-proposal"
     },
     {
       "title": "System Automation & API Design",
@@ -258,7 +260,8 @@ export const siteConfig = {
       ],
       "price": "",
       "pricingDetails": "",
-      "showPricing": false
+      "showPricing": true,
+      "proposalId": "automation-proposal"
     },
     {
       "title": "SEO & WordPress Customization",
@@ -271,7 +274,8 @@ export const siteConfig = {
       ],
       "price": "",
       "pricingDetails": "",
-      "showPricing": true
+      "showPricing": true,
+      "proposalId": "seo-proposal"
     }
   ],
   "caseStudies": [
@@ -760,6 +764,181 @@ export const siteConfig = {
     ]
   },
   "proposals": [
+    {
+      "id": "web-dev-proposal",
+      "serviceTitle": "Full-Stack Web Architecture",
+      "title": "Full-Stack Web Development Proposal",
+      "subtitle": "High-performance custom web applications built for business growth",
+      "plans": [
+        {
+          "name": "Starter Web Plan",
+          "price": "$500",
+          "period": "project",
+          "description": "Perfect for landing pages, portfolio sites, or small-scale web apps",
+          "features": [
+            "Single-page or multi-page React/Next.js frontend",
+            "Tailwind CSS responsive styling",
+            "Contact form integration & email notifications",
+            "SEO basic setup & speed optimization",
+            "1 month post-launch support"
+          ],
+          "highlighted": false
+        },
+        {
+          "name": "Growth Web Plan",
+          "price": "$1,500",
+          "period": "project",
+          "description": "Ideal for growing startups and businesses needing dynamic web apps",
+          "features": [
+            "Next.js / React full-stack application",
+            "Node.js / Laravel backend API integration",
+            "Database design & hosting (PostgreSQL/MySQL)",
+            "User authentication & secure dashboard",
+            "Stripe / SSLCommerz payment integration",
+            "3 months post-launch support"
+          ],
+          "highlighted": true,
+          "badge": "Most Popular"
+        },
+        {
+          "name": "Enterprise Web Plan",
+          "price": "$3,500",
+          "period": "project",
+          "description": "For custom SaaS products, marketplaces, and high-performance enterprises",
+          "features": [
+            "Everything in Growth Plan",
+            "High-scale multi-vendor or booking engine",
+            "Redis caching & queue management",
+            "Comprehensive admin control panel",
+            "Advanced analytics integration",
+            "6 months priority support & handoff documentation"
+          ],
+          "highlighted": false
+        }
+      ],
+      "paymentTerms": [
+        "50% upfront payment, 50% upon project completion",
+        "Clear project scope document signed by both parties",
+        "14-day review period for client feedback during milestones",
+        "Hosting and domain costs not included"
+      ]
+    },
+    {
+      "id": "security-proposal",
+      "serviceTitle": "DevSecOps & Security Audits",
+      "title": "DevSecOps & Security Hardening Proposal",
+      "subtitle": "Protect your web assets with production-grade zero-trust architectures",
+      "plans": [
+        {
+          "name": "Basic Audit Plan",
+          "price": "$300",
+          "period": "audit",
+          "description": "Vulnerability scan and entry-level security analysis",
+          "features": [
+            "Static code analysis (SAST)",
+            "Dependency vulnerability scanning",
+            "Basic API security check",
+            "Detailed security recommendations report"
+          ],
+          "highlighted": false
+        },
+        {
+          "name": "Standard Hardening Plan",
+          "price": "$800",
+          "period": "project",
+          "description": "Security hardening for small-to-medium web applications",
+          "features": [
+            "Everything in Basic Audit Plan",
+            "Session security & JWT/cookie configuration",
+            "CSRF & XSS protection implementation",
+            "Database input sanitization & parameterized queries",
+            "Redis-backed OTP/rate-limiting setup",
+            "SSL certificate configuration"
+          ],
+          "highlighted": true,
+          "badge": "Highly Recommended"
+        },
+        {
+          "name": "Enterprise Shield Plan",
+          "price": "$2,000",
+          "period": "project",
+          "description": "Zero-trust security implementation for high-risk platforms",
+          "features": [
+            "Everything in Standard Plan",
+            "Web Crypto API (HMAC-SHA256) signed sessions",
+            "Magic-byte file validation on uploads",
+            "Secure payment signature verification (SSLCommerz/Stripe)",
+            "CI/CD security integration (secret scanning, code signing)",
+            "Post-audit penetration testing report"
+          ],
+          "highlighted": false
+        }
+      ],
+      "paymentTerms": [
+        "100% payment upfront for Audit, 50/50 for Hardening & Shield plans",
+        "Access credentials must be shared securely via encrypted vault",
+        "All vulnerability reports are strictly confidential",
+        "Includes 30 days of security monitoring post-deployment"
+      ]
+    },
+    {
+      "id": "automation-proposal",
+      "serviceTitle": "System Automation & API Design",
+      "title": "System Automation & Custom API Proposal",
+      "subtitle": "Streamline operations and scale your systems with custom workflows",
+      "plans": [
+        {
+          "name": "Simple Automation Plan",
+          "price": "$250",
+          "period": "project",
+          "description": "Automate repetitive tasks or single-flow integrations",
+          "features": [
+            "n8n or Zapier workflow setup (up to 3 nodes/triggers)",
+            "Single API integration (e.g. Google Sheets to Telegram)",
+            "Error notification system",
+            "2 weeks maintenance support"
+          ],
+          "highlighted": false
+        },
+        {
+          "name": "Standard Integration Plan",
+          "price": "$600",
+          "period": "project",
+          "description": "Multi-flow automated pipelines for business operations",
+          "features": [
+            "Everything in Simple Automation",
+            "Custom REST API endpoint development",
+            "Multi-node n8n workflow design",
+            "Redis cache storage setup for API optimization",
+            "Webhook handlers for real-time notifications",
+            "1 month support"
+          ],
+          "highlighted": true,
+          "badge": "Most Popular"
+        },
+        {
+          "name": "Enterprise Workflow Plan",
+          "price": "$1,500",
+          "period": "project",
+          "description": "Enterprise-grade process automation and scalable API architecture",
+          "features": [
+            "Everything in Standard Plan",
+            "Custom cron schedules and worker queues",
+            "n8n self-hosted setup and configuration",
+            "High-throughput API gateway development",
+            "Detailed system architecture diagram",
+            "3 months priority support & SLA"
+          ],
+          "highlighted": false
+        }
+      ],
+      "paymentTerms": [
+        "50% upfront, 50% upon deployment & workflow handoff",
+        "API rate limit caps must be respected based on chosen plans",
+        "Includes complete n8n workflow JSON export files",
+        "n8n cloud or hosting charges are billed directly to the client"
+      ]
+    },
     {
       "id": "seo-proposal",
       "serviceTitle": "SEO & WordPress Customization",
