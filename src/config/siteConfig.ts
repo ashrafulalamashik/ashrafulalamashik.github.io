@@ -98,22 +98,24 @@ export const siteConfig = {
     "current": {
       "title": "Operation Manager",
       "company": "Future Minds Academy",
-      "period": "2025 - Present",
+      "period": "2025 Nov– Present ",
       "location": "Bogura, Bangladesh",
       "description": [
-        "Overseeing all digital operations, content workflow, and performance monitoring",
-        "Leading SEO, website management, and automation-based operational improvements",
-        "Developing conversion-focused website funnels to improve student sign-ups",
-        "Managing cross-functional teams to ensure high-quality digital service delivery",
-        "Building and maintaining full-stack web applications using Laravel, Next.js, and React for internal tools and client-facing projects",
-        "Automating operational workflows with n8n to reduce manual tasks and improve efficiency"
+        "Operating under personal freelance brand ‘fuminds.com’, delivering web development and digital consulting services to clients across Bangladesh.",
+        "Implemented HMAC-SHA256 signed session tokens, broken access control fixes, and OWASP-compliant security hardening on live government-facing applications.",
+        "Managed end-to-end client relationships including requirement gathering, architecture design, deployment on Hostinger VPS, and post-launch support.",
+        "Built and maintained multiple client websites; conducted WordPress malware remediation and security hardening across production sites.",
+        "Overseeing all digital operations, content workflow, and performance monitoring across multiple channels.",
+        "Leading SEO strategy, website management, and automation-based operational improvements.",
+        "Developing conversion-focused website funnels resulting in improved student enrollment and sign-ups.",
+        "Managing cross-functional teams to ensure consistent, high-quality digital service delivery."
       ]
     },
     "previous": [
       {
-        "title": "Assistant Operation (Technical SEO Specialist & WordPress Customization)",
+        "title": "Assistant Operation ",
         "company": "SEO Expate Bangladesh Ltd.",
-        "period": "Nov 2024 - Nov 2025",
+        "period": "2023 Nov – 2025 Oct",
         "location": "Bogura, Bangladesh",
         "description": [
           "Managed daily operational tasks, SEO campaign executions, and WordPress site performance reviews",
@@ -1078,7 +1080,7 @@ export const siteConfig = {
       "plans": [
         {
           "name": "Starter Web Plan",
-          "price": "$500",
+          "price": "$150",
           "period": "project",
           "description": "Perfect for landing pages, portfolio sites, or small-scale web apps",
           "features": [
@@ -1092,7 +1094,7 @@ export const siteConfig = {
         },
         {
           "name": "Growth Web Plan",
-          "price": "$1,500",
+          "price": "$500",
           "period": "project",
           "description": "Ideal for growing startups and businesses needing dynamic web apps",
           "features": [

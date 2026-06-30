@@ -52,6 +52,8 @@ const CaseStudyDetail = lazy(() => import('./pages/CaseStudyDetail'));
 const Admin = lazy(() => import('./pages/Admin'));
 const Blog = lazy(() => import('./pages/Blog'));
 const BlogPost = lazy(() => import('./pages/BlogPost'));
+const AllProjects = lazy(() => import('./pages/AllProjects'));
+const AllCaseStudies = lazy(() => import('./pages/AllCaseStudies'));
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -849,7 +851,7 @@ function Home() {
           </div>
 
           <div className="grid sm:grid-cols-2 gap-6">
-            {siteConfig.projects && siteConfig.projects.map((project, index) => (
+            {siteConfig.projects && siteConfig.projects.slice(0, 4).map((project, index) => (
               <div 
                 key={index} 
                 className="project-card group bg-gradient-to-br from-zinc-900 to-zinc-950 border border-zinc-800 rounded-2xl p-6 sm:p-8 hover:border-[#22C55E]/50 transition-all duration-300 hover:shadow-xl hover:shadow-[#22C55E]/5 relative overflow-hidden flex flex-col justify-between"
@@ -879,6 +881,18 @@ function Home() {
               </div>
             ))}
           </div>
+
+          {siteConfig.projects && siteConfig.projects.length > 4 && (
+            <div className="text-center mt-12">
+              <Link
+                to="/projects"
+                className="inline-flex items-center gap-2 px-6 py-3 bg-zinc-900 border border-zinc-800 text-white rounded-full font-medium hover:bg-zinc-800 transition-colors hover:border-[#22C55E]/50 cursor-pointer"
+              >
+                See More Projects
+                <ArrowUpRight size={16} className="text-[#22C55E]" />
+              </Link>
+            </div>
+          )}
         </div>
       </section>
 
@@ -953,7 +967,7 @@ function Home() {
           </div>
 
           <div className="grid md:grid-cols-2 gap-4 sm:gap-6">
-            {caseStudies.map((study, index) => (
+            {caseStudies.slice(0, 4).map((study, index) => (
               <Link 
                 key={index} 
                 to={`/case-study/${(study as any).slug}`}
@@ -1005,6 +1019,18 @@ function Home() {
               </Link>
             ))}
           </div>
+
+          {caseStudies && caseStudies.length > 4 && (
+            <div className="text-center mt-12">
+              <Link
+                to="/case-studies"
+                className="inline-flex items-center gap-2 px-6 py-3 bg-zinc-900 border border-zinc-800 text-white rounded-full font-medium hover:bg-zinc-800 transition-colors hover:border-[#22C55E]/50 cursor-pointer"
+              >
+                See More Case Studies
+                <ArrowUpRight size={16} className="text-[#22C55E]" />
+              </Link>
+            </div>
+          )}
         </div>
       </section>
 
@@ -1439,6 +1465,8 @@ function App() {
           <Route path="/admin" element={<Admin />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/blog/:slug" element={<BlogPost />} />
+          <Route path="/projects" element={<AllProjects />} />
+          <Route path="/case-studies" element={<AllCaseStudies />} />
         </Routes>
       </Suspense>
     </Router>
