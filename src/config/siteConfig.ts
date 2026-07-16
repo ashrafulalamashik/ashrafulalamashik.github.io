@@ -141,6 +141,8 @@ export const siteConfig = {
   "projects": [
     {
       "title": "Future Shop — Multi-Vendor E-Commerce Marketplace",
+      "category": "Web Dev",
+      "liveUrl": "https://future-shop-omega.vercel.app/",
       "description": "Full-stack marketplace platform for local retailers in Sherpur & Bogura, built with Laravel 12 and Next.js 16. Features secure vendor management, wallet & coupon systems, and a modern Amazon/Daraz-style shopping experience.",
       "tags": [
         "Laravel 12",
@@ -151,6 +153,8 @@ export const siteConfig = {
     },
     {
       "title": "জনসংযোগ ২৪/৭ — MP Civic Engagement Portal",
+      "category": "Web Dev",
+      "liveUrl": "https://comilla10.fuminds.com/",
       "description": "Web platform enabling constituents to submit and track complaints, suggestions, and ideas directly to their elected representative. Built with Next.js and Prisma, featuring an admin dashboard and automated Telegram notifications.",
       "tags": [
         "Next.js",
@@ -161,6 +165,8 @@ export const siteConfig = {
     },
     {
       "title": "AI Voice Appointment Booking System",
+      "category": "n8n Automation",
+      "liveUrl": "",
       "description": "Bengali-language voice AI assistant that lets hospital patients book appointments entirely by phone, with no human operator needed. Built using VAPI.ai, n8n automation, and live calendar integration.",
       "tags": [
         "VAPI.ai",
@@ -171,6 +177,8 @@ export const siteConfig = {
     },
     {
       "title": "MP-Tracker — Parliamentary Constituency Management System",
+      "category": "Web Dev",
+      "liveUrl": "https://mptracker.fuminds.com/",
       "description": "Laravel-based system managing 600,000+ voter records and donation tracking, with custom Bengali-language PDF report generation.",
       "tags": [
         "Laravel",
@@ -181,6 +189,8 @@ export const siteConfig = {
     },
     {
       "title": "Esports Tournament Platform",
+      "category": "Web Dev",
+      "liveUrl": "",
       "description": "Free Fire esports tournament portal with user registration, paid matches, bKash/Nagad wallet transactions, and a robust admin dashboard. Built with Next.js, Supabase, Zod, and Cloudinary.",
       "tags": [
         "Next.js",
@@ -192,6 +202,8 @@ export const siteConfig = {
     },
     {
       "title": "কীটনাশক দোকান ERP (Pesticide Retail ERP)",
+      "category": "Web Dev",
+      "liveUrl": "https://appletraders.store/",
       "description": "কীটনাশক ও কৃষি রাসায়নিক খুচরা দোকানের জন্য সম্পূর্ণ বাংলা UI সম্বলিত ERP Web Application। এটি একক ব্যবহারকারীর (দোকান মালিক) জন্য SQLite (better-sqlite3), Next.js 14, এবং Tailwind CSS দিয়ে তৈরি। এতে রয়েছে বাকি লেনদেন ট্র্যাকিং, অটোমেটিক ব্যাকআপ এবং পিডিএফ রশিদ জেনারেশন সুবিধা।",
       "tags": [
         "Next.js 14",
@@ -203,6 +215,8 @@ export const siteConfig = {
     },
     {
       "title": "CDS Membership Portal – Dynamic & Secure Application System",
+      "category": "Web Dev",
+      "liveUrl": "https://example.com",
       "description": "Citizen Development Society (CDS)-এর জন্য একটি ডায়নামিক, রেসপনসিভ এবং দ্বিভাষিক (বাংলা/ইংরেজি) মেম্বারশিপ অ্যাপ্লিকেশন পোর্টাল। এতে রয়েছে ফায়ারবেস (Firestore) ব্যাকএন্ড সিকিউরিটি, ডাবল সাবমিশন প্রতিরোধে ব্যাচ রাইট এবং অন-দ্য-ফ্লাই ট্রান্সলেটেড পিডিএফ জেনারেশন সুবিধা।",
       "tags": [
         "HTML5/CSS3",
@@ -421,7 +435,8 @@ export const siteConfig = {
         "Bulletproof backend authentication with zero vulnerability surface on OTP and token exchange.",
         "High scalability and low latency due to extensive Redis caching and Cloudflare R2 offloading.",
         "Robust client-side protection blocking price, quantity, and payload modifications through strict server checks."
-      ]
+      ],
+      "liveUrl": "https://future-shop-omega.vercel.app/"
     },
     {
       "slug": "jonoshongog-portal",
@@ -861,7 +876,8 @@ export const siteConfig = {
         "SQLite ডাটাবেস ও ট্রিগারের মাধ্যমে নির্ভুল হিসাব ট্র্যাকিং ও দ্রুত অপারেশন।",
         "Zod, secure cookie এবং IP-based rate limiting এর মাধ্যমে OWASP-সম্মত সিকিউরিটি।",
         "SheetJS এবং jsPDF এর মাধ্যমে সম্পূর্ণ সার্ভার-নির্ভরতাহীন ডেক্সটপ এক্সপোর্ট সুবিধা।"
-      ]
+      ],
+      "liveUrl": "https://appletraders.store/"
     },
     {
       "slug": "cds-membership-portal",
@@ -948,7 +964,7 @@ export const siteConfig = {
         "ফায়ারবেস ডাবল-সাবমিশন প্রতিরোধের কারণে ডুপ্লিকেট মুক্ত ডাটাবেস।",
         "সম্পূর্ণ বাংলা ও ইংরেজি ভাষায় নিখুঁত অফিশিয়াল পিডিএফ কপি জেনারেশন।"
       ],
-      "liveUrl": "https://github.com/futuremindsbdinfo/cds-membership-form"
+      "liveUrl": "https://membership.fuminds.com/"
     }
   ],
   "skills": [
