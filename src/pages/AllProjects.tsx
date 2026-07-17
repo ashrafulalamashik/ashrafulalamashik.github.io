@@ -5,10 +5,12 @@ import {
   ArrowLeft, 
   Search, 
   Code,
-  ExternalLink
+  ExternalLink,
+  Image as ImageIcon
 } from 'lucide-react';
 import siteConfig from '../config/siteConfig';
 import ProjectPreviewModal from '../components/ProjectPreviewModal';
+import ScreenshotModal from '../components/ScreenshotModal';
 
 // Particle Background Component
 function ParticleBackground() {
@@ -117,6 +119,7 @@ export default function AllProjects() {
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [selectedTag, setSelectedTag] = useState<string | null>(null);
   const [previewData, setPreviewData] = useState<{isOpen: boolean, url: string, title: string}>({isOpen: false, url: '', title: ''});
+  const [screenshotData, setScreenshotData] = useState<{isOpen: boolean, images: string[], title: string}>({isOpen: false, images: [], title: ''});
   
   const mainRef = useRef<HTMLDivElement>(null);
   const { personal, projects, siteIdentity } = siteConfig;
@@ -305,10 +308,38 @@ export default function AllProjects() {
                 className="project-item-card group bg-gradient-to-br from-zinc-900 to-zinc-950 border border-zinc-800 rounded-2xl p-6 sm:p-8 hover:border-[#22C55E]/50 transition-all duration-300 hover:shadow-xl hover:shadow-[#22C55E]/5 relative overflow-hidden flex flex-col justify-between"
               >
                 <div className="absolute inset-0 bg-gradient-to-br from-[#22C55E]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                <div className="relative">
-                  <div className="w-12 h-12 bg-gradient-to-br from-[#22C55E]/20 to-[#22C55E]/5 rounded-xl flex items-center justify-center mb-5 group-hover:scale-110 transition-transform">
-                    <Code className="text-[#22C55E]" size={24} />
+                
+                {/* Thumbnail Image */}
+                {(project as any).screenshots && (project as any).screenshots.length > 0 && (
+                  <div 
+                    className="w-full h-48 mb-6 rounded-xl overflow-hidden relative border border-zinc-800/50 cursor-pointer group-hover:border-[#22C55E]/30 transition-colors"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      e.stopPropagation();
+                      setScreenshotData({ isOpen: true, images: (project as any).screenshots, title: project.title });
+                    }}
+                  >
+                    <img 
+                      src={(project as any).screenshots[0]} 
+                      alt={project.title} 
+                      className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
+                    />
+                    <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center backdrop-blur-[2px]">
+                      <div className="bg-[#22C55E]/90 text-white p-3 rounded-full translate-y-4 group-hover:translate-y-0 transition-all duration-300 shadow-lg">
+                        <ImageIcon size={20} />
+                      </div>
+                    </div>
                   </div>
+                )}
+                
+                <div className="relative">
+                  {/* Show icon only if no screenshots */}
+                  {!((project as any).screenshots && (project as any).screenshots.length > 0) && (
+                    <div className="w-12 h-12 bg-gradient-to-br from-[#22C55E]/20 to-[#22C55E]/5 rounded-xl flex items-center justify-center mb-5 group-hover:scale-110 transition-transform">
+                      <Code className="text-[#22C55E]" size={24} />
+                    </div>
+                  )}
+                  
                   <h3 className="text-lg sm:text-xl font-bold mb-3 group-hover:text-[#22C55E] transition-colors">
                     {project.title}
                   </h3>
@@ -344,6 +375,21 @@ export default function AllProjects() {
                       <ExternalLink size={16} className="group-hover/btn:-translate-y-0.5 group-hover/btn:translate-x-0.5 transition-transform" />
                       See Site
                     </button>
+                    
+                    {/* View Screenshots Button */}
+                    {(project as any).screenshots && (project as any).screenshots.length > 0 && (
+                      <button
+                        onClick={(e) => {
+                          e.preventDefault();
+                          e.stopPropagation();
+                          setScreenshotData({ isOpen: true, images: (project as any).screenshots, title: project.title });
+                        }}
+                        className="flex items-center gap-2 px-4 py-2 bg-zinc-900 text-white border border-zinc-700 hover:border-[#22C55E] hover:text-[#22C55E] rounded-lg text-sm font-medium transition-all group/btn z-20"
+                      >
+                        <ImageIcon size={16} className="group-hover/btn:scale-110 transition-transform" />
+                        Screenshots ({(project as any).screenshots.length})
+                      </button>
+                    )}
                   </div>
                 </div>
               </div>
@@ -362,6 +408,14 @@ export default function AllProjects() {
         onClose={() => setPreviewData({ ...previewData, isOpen: false })} 
         url={previewData.url} 
         title={previewData.title} 
+      />
+
+      {/* Screenshot Modal */}
+      <ScreenshotModal 
+        isOpen={screenshotData.isOpen}
+        onClose={() => setScreenshotData({ ...screenshotData, isOpen: false })}
+        images={screenshotData.images}
+        title={screenshotData.title}
       />
     </div>
   );
