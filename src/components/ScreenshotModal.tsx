@@ -46,12 +46,12 @@ export default function ScreenshotModal({ isOpen, onClose, images, title }: Scre
   const getImageContainerClasses = () => {
     switch (deviceMode) {
       case 'mobile':
-        return 'w-[375px] h-[667px] mx-auto rounded-3xl border-[12px] border-zinc-900 shadow-2xl relative overflow-hidden flex items-center bg-zinc-900';
+        return 'w-[375px] h-[667px] mx-auto rounded-3xl border-[12px] border-zinc-900 shadow-2xl relative overflow-y-auto overflow-x-hidden bg-zinc-900';
       case 'tablet':
-        return 'w-[768px] h-[1024px] mx-auto rounded-3xl border-[16px] border-zinc-900 shadow-2xl relative overflow-hidden flex items-center bg-zinc-900';
+        return 'w-[768px] h-[1024px] mx-auto rounded-3xl border-[16px] border-zinc-900 shadow-2xl relative overflow-y-auto overflow-x-hidden bg-zinc-900';
       case 'desktop':
       default:
-        return 'w-full h-full rounded-xl border border-zinc-800 shadow-2xl relative overflow-hidden flex items-center justify-center bg-zinc-900/50';
+        return 'w-full h-full rounded-xl border border-zinc-800 shadow-2xl relative overflow-y-auto overflow-x-hidden bg-zinc-900/50';
     }
   };
 
@@ -123,7 +123,7 @@ export default function ScreenshotModal({ isOpen, onClose, images, title }: Scre
               <img 
                 src={images[currentIndex]} 
                 alt={`${title} screenshot ${currentIndex + 1}`}
-                className={deviceMode === 'desktop' ? 'max-w-full max-h-full object-contain' : 'w-full h-full object-cover object-top'}
+                className="w-full h-auto object-top min-h-full"
               />
               
               {/* Navigation Arrows */}
