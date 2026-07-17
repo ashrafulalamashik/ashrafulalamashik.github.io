@@ -1840,7 +1840,7 @@ export default function Admin() {
                         <button 
                           type="button" 
                           onClick={() => {
-                            const newItem = { title: '', description: '', tags: [] };
+                            const newItem = { title: '', category: '', liveUrl: '', description: '', tags: [] };
                             setConfig((p: any) => ({ ...p, projects: [newItem, ...(p.projects || [])] }));
                           }}
                           className="text-[#22C55E] hover:text-[#16A34A] text-xs flex items-center gap-1 font-semibold"
@@ -1880,6 +1880,30 @@ export default function Admin() {
                                 }}
                                 className="w-full bg-zinc-900 border border-zinc-850 rounded px-2.5 py-1.5 text-xs text-white"
                               />
+                              <div className="grid sm:grid-cols-2 gap-2.5">
+                                <input 
+                                  type="text" 
+                                  value={proj.category || ''} 
+                                  placeholder="Category (e.g. Web Dev)"
+                                  onChange={(e) => {
+                                    const next = [...config.projects];
+                                    next[idx].category = e.target.value;
+                                    setConfig((p: any) => ({ ...p, projects: next }));
+                                  }}
+                                  className="w-full bg-zinc-900 border border-zinc-850 rounded px-2.5 py-1.5 text-xs text-white"
+                                />
+                                <input 
+                                  type="text" 
+                                  value={proj.liveUrl || ''} 
+                                  placeholder="Live URL (Site Link)"
+                                  onChange={(e) => {
+                                    const next = [...config.projects];
+                                    next[idx].liveUrl = e.target.value;
+                                    setConfig((p: any) => ({ ...p, projects: next }));
+                                  }}
+                                  className="w-full bg-zinc-900 border border-zinc-850 rounded px-2.5 py-1.5 text-xs text-white"
+                                />
+                              </div>
                               <textarea 
                                 value={proj.description} 
                                 placeholder="Description"
@@ -2162,7 +2186,7 @@ export default function Admin() {
                         <button 
                           type="button" 
                           onClick={() => {
-                            const newItem = { slug: '', category: '', title: '', problem: '', solution: '', results: [], featured: false };
+                            const newItem = { slug: '', category: '', liveUrl: '', title: '', problem: '', solution: '', results: [], featured: false };
                             setConfig((p: any) => ({ ...p, caseStudies: [...p.caseStudies, newItem] }));
                           }}
                           className="text-[#22C55E] hover:text-[#16A34A] text-xs flex items-center gap-1 font-semibold"
@@ -2227,17 +2251,30 @@ export default function Admin() {
                                 }}
                                 className="bg-zinc-900 border border-zinc-850 rounded px-2.5 py-1.5 text-xs text-white"
                               />
-                              <input 
-                                type="text" 
-                                value={study.category} 
-                                placeholder="Category (e.g. E-COMMERCE)"
-                                onChange={(e) => {
-                                  const next = [...config.caseStudies];
-                                  next[idx].category = e.target.value;
-                                  setConfig((p: any) => ({ ...p, caseStudies: next }));
-                                }}
-                                className="sm:col-span-3 bg-zinc-900 border border-zinc-850 rounded px-2.5 py-1.5 text-xs text-white"
-                              />
+                              <div className="sm:col-span-3 grid sm:grid-cols-2 gap-2.5">
+                                <input 
+                                  type="text" 
+                                  value={study.category} 
+                                  placeholder="Category (e.g. E-COMMERCE)"
+                                  onChange={(e) => {
+                                    const next = [...config.caseStudies];
+                                    next[idx].category = e.target.value;
+                                    setConfig((p: any) => ({ ...p, caseStudies: next }));
+                                  }}
+                                  className="bg-zinc-900 border border-zinc-850 rounded px-2.5 py-1.5 text-xs text-white"
+                                />
+                                <input 
+                                  type="text" 
+                                  value={study.liveUrl || ''} 
+                                  placeholder="Live URL (Site Link)"
+                                  onChange={(e) => {
+                                    const next = [...config.caseStudies];
+                                    next[idx].liveUrl = e.target.value;
+                                    setConfig((p: any) => ({ ...p, caseStudies: next }));
+                                  }}
+                                  className="bg-zinc-900 border border-zinc-850 rounded px-2.5 py-1.5 text-xs text-white"
+                                />
+                              </div>
                               <div className="sm:col-span-3 flex gap-2.5 items-center">
                                 <input 
                                   type="text" 

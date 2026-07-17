@@ -893,7 +893,7 @@ export const siteConfig = {
         "ইউজার ল্যাঙ্গুয়েজ অনুযায়ী প্রিন্ট-যোগ্য ডাইনামিক পিডিএফ তৈরি",
         "ইমেজ কম্প্রেশন ও অটোমেটিক প্রেজেন্ট-পার্মানেন্ট অ্যাড্রেস ক্লোনিং"
       ],
-      "featured": false,
+      "featured": true,
       "role": "Lead Full-Stack Developer",
       "status": "Completed (Production)",
       "completionProgress": {

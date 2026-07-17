@@ -4,9 +4,11 @@ import { gsap } from 'gsap';
 import { 
   ArrowLeft, 
   Search, 
-  Code
+  Code,
+  ExternalLink
 } from 'lucide-react';
 import siteConfig from '../config/siteConfig';
+import ProjectPreviewModal from '../components/ProjectPreviewModal';
 
 // Particle Background Component
 function ParticleBackground() {
@@ -112,7 +114,9 @@ function GradientOrbs() {
 
 export default function AllProjects() {
   const [searchQuery, setSearchQuery] = useState('');
+  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [selectedTag, setSelectedTag] = useState<string | null>(null);
+  const [previewData, setPreviewData] = useState<{isOpen: boolean, url: string, title: string}>({isOpen: false, url: '', title: ''});
   
   const mainRef = useRef<HTMLDivElement>(null);
   const { personal, projects, siteIdentity } = siteConfig;
@@ -131,6 +135,17 @@ export default function AllProjects() {
     return () => ctx.revert();
   }, []);
 
+  // Get all unique categories from projects
+  const allCategories = useMemo(() => {
+    const cats = new Set<string>();
+    (projects || []).forEach(p => {
+      if ((p as any).category) {
+        cats.add((p as any).category);
+      }
+    });
+    return Array.from(cats);
+  }, [projects]);
+
   // Get all unique tags from projects
   const allTags = useMemo(() => {
     const tags = new Set<string>();
@@ -140,15 +155,24 @@ export default function AllProjects() {
     return Array.from(tags);
   }, [projects]);
 
-  // Filter projects based on search query and selected tag
+  // Filter projects based on search query, category, and selected tag
   const filteredProjects = useMemo(() => {
     return (projects || []).filter(p => {
       const matchesSearch = p.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
                             p.description.toLowerCase().includes(searchQuery.toLowerCase());
+      const matchesCategory = selectedCategory ? (p as any).category === selectedCategory : true;
       const matchesTag = selectedTag ? p.tags.includes(selectedTag) : true;
-      return matchesSearch && matchesTag;
+      return matchesSearch && matchesCategory && matchesTag;
     });
-  }, [projects, searchQuery, selectedTag]);
+  }, [projects, searchQuery, selectedCategory, selectedTag]);
+
+  const handleCategoryClick = (cat: string) => {
+    if (selectedCategory === cat) {
+      setSelectedCategory(null);
+    } else {
+      setSelectedCategory(cat);
+    }
+  };
 
   const handleTagClick = (tag: string) => {
     if (selectedTag === tag) {
@@ -219,8 +243,40 @@ export default function AllProjects() {
             />
           </div>
 
-          <div className="space-y-2">
-            <span className="text-xs text-zinc-500 uppercase tracking-wider block">Filter by Tech Stack</span>
+          <div className="space-y-4">
+            {allCategories.length > 0 && (
+              <div className="space-y-2">
+                <span className="text-xs text-zinc-500 uppercase tracking-wider block">Filter by Category</span>
+                <div className="flex flex-wrap gap-2">
+                  <button
+                    onClick={() => setSelectedCategory(null)}
+                    className={`text-xs px-4 py-1.5 rounded-full border transition-all ${
+                      selectedCategory === null
+                        ? 'bg-[#22C55E] text-white border-[#22C55E]'
+                        : 'bg-zinc-950 text-zinc-400 border-zinc-800 hover:text-white hover:border-zinc-700'
+                    }`}
+                  >
+                    All
+                  </button>
+                  {allCategories.map((cat) => (
+                    <button
+                      key={cat}
+                      onClick={() => handleCategoryClick(cat)}
+                      className={`text-xs px-4 py-1.5 rounded-full border transition-all ${
+                        selectedCategory === cat
+                          ? 'bg-[#22C55E] text-white border-[#22C55E]'
+                          : 'bg-zinc-950 text-zinc-400 border-zinc-800 hover:text-white hover:border-zinc-700'
+                      }`}
+                    >
+                      {cat}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            <div className="space-y-2 pt-4 border-t border-zinc-800/50">
+              <span className="text-xs text-zinc-500 uppercase tracking-wider block">Filter by Tech Stack</span>
             <div className="flex flex-wrap gap-2">
               {allTags.map((tag) => (
                 <button
@@ -238,6 +294,7 @@ export default function AllProjects() {
             </div>
           </div>
         </div>
+      </div>
 
         {/* Projects Grid */}
         <div className="grid sm:grid-cols-2 gap-6">
@@ -259,15 +316,35 @@ export default function AllProjects() {
                     {project.description}
                   </p>
                 </div>
-                <div className="relative flex flex-wrap gap-2 mt-auto">
-                  {project.tags.map((tag, tIndex) => (
-                    <span 
-                      key={tIndex} 
-                      className="text-xs bg-zinc-800/80 text-zinc-300 border border-zinc-700/50 px-3 py-1.5 rounded-full"
+                <div className="relative flex flex-col gap-4 mt-auto">
+                  <div className="flex flex-wrap gap-2">
+                    {project.tags.map((tag, tIndex) => (
+                      <span 
+                        key={tIndex} 
+                        className="text-xs bg-zinc-800/80 text-zinc-300 border border-zinc-700/50 px-3 py-1.5 rounded-full"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                  
+                  {/* Action Buttons */}
+                  <div className="flex items-center gap-3 pt-2">
+                    {/* View Details is currently not implemented for projects (no individual project page), so we just add the See Site button */}
+                    <button
+                      onClick={(e) => {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        // Open the modal with the liveUrl if it exists, otherwise use a placeholder
+                        const liveUrl = (project as any).liveUrl || 'https://example.com';
+                        setPreviewData({ isOpen: true, url: liveUrl, title: project.title });
+                      }}
+                      className="flex items-center gap-2 px-4 py-2 bg-zinc-900 text-white border border-zinc-700 hover:border-[#22C55E] hover:text-[#22C55E] rounded-lg text-sm font-medium transition-all group/btn z-20"
                     >
-                      {tag}
-                    </span>
-                  ))}
+                      <ExternalLink size={16} className="group-hover/btn:-translate-y-0.5 group-hover/btn:translate-x-0.5 transition-transform" />
+                      See Site
+                    </button>
+                  </div>
                 </div>
               </div>
             ))
@@ -278,6 +355,14 @@ export default function AllProjects() {
           )}
         </div>
       </main>
+
+      {/* Project Preview Modal */}
+      <ProjectPreviewModal 
+        isOpen={previewData.isOpen} 
+        onClose={() => setPreviewData({ ...previewData, isOpen: false })} 
+        url={previewData.url} 
+        title={previewData.title} 
+      />
     </div>
   );
 }

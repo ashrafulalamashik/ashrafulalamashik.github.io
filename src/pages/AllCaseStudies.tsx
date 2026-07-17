@@ -5,9 +5,11 @@ import {
   ArrowLeft, 
   Search, 
   Check,
-  ArrowUpRight
+  ArrowUpRight,
+  ExternalLink
 } from 'lucide-react';
 import siteConfig from '../config/siteConfig';
+import ProjectPreviewModal from '../components/ProjectPreviewModal';
 
 // Particle Background Component
 function ParticleBackground() {
@@ -114,6 +116,7 @@ function GradientOrbs() {
 export default function AllCaseStudies() {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+  const [previewData, setPreviewData] = useState<{isOpen: boolean, url: string, title: string}>({isOpen: false, url: '', title: ''});
   
   const mainRef = useRef<HTMLDivElement>(null);
   const { personal, caseStudies, siteIdentity } = siteConfig;
@@ -276,14 +279,32 @@ export default function AllCaseStudies() {
                   </div>
                   
                   <div className="mt-4 pt-4 border-t border-zinc-800/80">
-                    <p className="text-zinc-500 text-xs uppercase tracking-wider mb-2">Key Outcome</p>
-                    <div className="flex flex-wrap gap-2">
-                      {study.results?.slice(0, 2).map((result, rIndex) => (
-                        <span key={rIndex} className="flex items-center gap-1.5 bg-zinc-950/80 border border-zinc-800/80 px-3 py-1 rounded-full text-xs text-zinc-300">
-                          <Check size={11} className="text-[#22C55E]" />
-                          {result}
-                        </span>
-                      ))}
+                    <div className="flex items-center justify-between">
+                      <div>
+                        <p className="text-zinc-500 text-xs uppercase tracking-wider mb-2">Key Outcome</p>
+                        <div className="flex flex-wrap gap-2">
+                          {study.results?.slice(0, 2).map((result, rIndex) => (
+                            <span key={rIndex} className="flex items-center gap-1.5 bg-zinc-950/80 border border-zinc-800/80 px-3 py-1 rounded-full text-xs text-zinc-300">
+                              <Check size={11} className="text-[#22C55E]" />
+                              {result}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                      
+                      {/* Action Button */}
+                      <button
+                        onClick={(e) => {
+                          e.preventDefault();
+                          e.stopPropagation();
+                          const liveUrl = (study as any).liveUrl || 'https://example.com';
+                          setPreviewData({ isOpen: true, url: liveUrl, title: study.title });
+                        }}
+                        className="flex-shrink-0 flex items-center gap-2 px-3 py-2 bg-zinc-900 text-white border border-zinc-700 hover:border-[#22C55E] hover:text-[#22C55E] rounded-lg text-sm font-medium transition-all group/btn z-20 self-end mt-4 sm:mt-0"
+                      >
+                        <ExternalLink size={16} className="group-hover/btn:-translate-y-0.5 group-hover/btn:translate-x-0.5 transition-transform" />
+                        See Site
+                      </button>
                     </div>
                   </div>
                 </div>
@@ -296,6 +317,14 @@ export default function AllCaseStudies() {
           )}
         </div>
       </main>
+
+      {/* Project Preview Modal */}
+      <ProjectPreviewModal 
+        isOpen={previewData.isOpen} 
+        onClose={() => setPreviewData({ ...previewData, isOpen: false })} 
+        url={previewData.url} 
+        title={previewData.title} 
+      />
     </div>
   );
 }
