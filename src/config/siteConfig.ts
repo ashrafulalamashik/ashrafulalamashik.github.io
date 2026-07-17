@@ -152,7 +152,23 @@ export const siteConfig = {
         "Laravel 12",
         "AWS S3",
         "Redis"
-      ]
+      ],
+      "screenshots": [
+        "/assets/screenshots/future-shop/Homepage.png",
+        "/assets/screenshots/future-shop/Categories.png",
+        "/assets/screenshots/future-shop/admin Products.png",
+        "/assets/screenshots/future-shop/products page.png",
+        "/assets/screenshots/future-shop/Admin Dashboard.png",
+        "/assets/screenshots/future-shop/Coupons.png",
+        "/assets/screenshots/future-shop/Customers.png",
+        "/assets/screenshots/future-shop/Invoices.png",
+        "/assets/screenshots/future-shop/Orders.png",
+        "/assets/screenshots/future-shop/Promotions.png",
+        "/assets/screenshots/future-shop/Users Management.png",
+        "/assets/screenshots/future-shop/Vendors.png",
+        "/assets/screenshots/future-shop/brands page.png",
+        "/assets/screenshots/future-shop/log in page.png"
+]
     },
     {
       "title": "জনসংযোগ ২৪/৭ — MP Civic Engagement Portal",
@@ -191,7 +207,18 @@ export const siteConfig = {
         "Tailwind CSS 4",
         "Vite",
         "MySQL"
-      ]
+      ],
+      "screenshots": [
+        "/assets/screenshots/mp-tracker/Dashboard.png",
+        "/assets/screenshots/mp-tracker/DO Letter সমূহ.png",
+        "/assets/screenshots/mp-tracker/admin login.png",
+        "/assets/screenshots/mp-tracker/audit-report.png",
+        "/assets/screenshots/mp-tracker/settings-page.png",
+        "/assets/screenshots/mp-tracker/আবেদনকারী তালিকা.png",
+        "/assets/screenshots/mp-tracker/প্রতিষ্ঠান তালিকা.png",
+        "/assets/screenshots/mp-tracker/বরাদ্দ সমূহ.png",
+        "/assets/screenshots/mp-tracker/বিতরণ তালিকা.png"
+]
     },
     {
       "title": "Esports Tournament Platform",
@@ -218,7 +245,17 @@ export const siteConfig = {
         "SQLite",
         "React Query",
         "Zod"
-      ]
+      ],
+      "screenshots": [
+        "/assets/screenshots/pesticide-erp/dashboard.png",
+        "/assets/screenshots/pesticide-erp/Customer.png",
+        "/assets/screenshots/pesticide-erp/Purchase.png",
+        "/assets/screenshots/pesticide-erp/Report.png",
+        "/assets/screenshots/pesticide-erp/Setting.png",
+        "/assets/screenshots/pesticide-erp/inventory.png",
+        "/assets/screenshots/pesticide-erp/sales.png",
+        "/assets/screenshots/pesticide-erp/suppliers.png"
+]
     },
     {
       "title": "CDS Membership Portal – Dynamic & Secure Application System",
@@ -231,7 +268,29 @@ export const siteConfig = {
         "Firebase Firestore",
         "Firebase Auth",
         "html2pdf.js"
-      ]
+      ],
+      "screenshots": [
+        "/assets/screenshots/cds-membership/Homepage.png",
+        "/assets/screenshots/cds-membership/Admin Dashboard.png",
+        "/assets/screenshots/cds-membership/admin panel.png",
+        "/assets/screenshots/cds-membership/tracking page.png"
+]
+    },
+    {
+      "title": "Design CSS Inspector",
+      "category": "Chrome Extension",
+      "liveUrl": "https://github.com/ashrafulalamashik/design-css-inspector",
+      "description": "Chrome Extension to inspect CSS designs, colors, typography, and spacing on any web page. Easily copy CSS properties and analyze web designs.",
+      "tags": ["Chrome Extension", "JavaScript", "CSS", "HTML5"],
+      "screenshots": []
+    },
+    {
+      "title": "QR Screen Scanner",
+      "category": "Chrome Extension",
+      "liveUrl": "https://github.com/ashrafulalamashik/qr-screen-scanner",
+      "description": "Chrome extension to easily scan QR codes displayed on the screen and read their contents instantly without needing a mobile device.",
+      "tags": ["Chrome Extension", "JavaScript", "QR Code", "HTML5"],
+      "screenshots": []
     }
   ],
   "certifications": [
