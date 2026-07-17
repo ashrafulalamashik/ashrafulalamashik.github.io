@@ -145,10 +145,13 @@ export const siteConfig = {
       "liveUrl": "https://future-shop-omega.vercel.app/",
       "description": "Full-stack marketplace platform for local retailers in Sherpur & Bogura, built with Laravel 12 and Next.js 16. Features secure vendor management, wallet & coupon systems, and a modern Amazon/Daraz-style shopping experience.",
       "tags": [
-        "Laravel 12",
         "Next.js 16",
-        "MySQL",
-        "TailwindCSS"
+        "React 19",
+        "Tailwind CSS 4",
+        "shadcn/ui",
+        "Laravel 12",
+        "AWS S3",
+        "Redis"
       ]
     },
     {
@@ -157,10 +160,11 @@ export const siteConfig = {
       "liveUrl": "https://comilla10.fuminds.com/",
       "description": "Web platform enabling constituents to submit and track complaints, suggestions, and ideas directly to their elected representative. Built with Next.js and Prisma, featuring an admin dashboard and automated Telegram notifications.",
       "tags": [
-        "Next.js",
+        "Next.js 16",
+        "React 19",
+        "Tailwind CSS 4",
         "Prisma",
-        "PostgreSQL",
-        "Telegram API"
+        "PostgreSQL"
       ]
     },
     {
@@ -181,10 +185,12 @@ export const siteConfig = {
       "liveUrl": "https://mptracker.fuminds.com/",
       "description": "Laravel-based system managing 600,000+ voter records and donation tracking, with custom Bengali-language PDF report generation.",
       "tags": [
-        "Laravel",
-        "MySQL",
-        "PDF Generation",
-        "Database Design"
+        "Laravel 12",
+        "Filament",
+        "Livewire",
+        "Tailwind CSS 4",
+        "Vite",
+        "MySQL"
       ]
     },
     {
@@ -206,23 +212,24 @@ export const siteConfig = {
       "liveUrl": "https://appletraders.store/",
       "description": "কীটনাশক ও কৃষি রাসায়নিক খুচরা দোকানের জন্য সম্পূর্ণ বাংলা UI সম্বলিত ERP Web Application। এটি একক ব্যবহারকারীর (দোকান মালিক) জন্য SQLite (better-sqlite3), Next.js 14, এবং Tailwind CSS দিয়ে তৈরি। এতে রয়েছে বাকি লেনদেন ট্র্যাকিং, অটোমেটিক ব্যাকআপ এবং পিডিএফ রশিদ জেনারেশন সুবিধা।",
       "tags": [
-        "Next.js 14",
+        "TanStack Start",
+        "React 19",
+        "Tailwind CSS 4",
         "SQLite",
-        "TypeScript",
-        "jsPDF",
-        "TailwindCSS"
+        "React Query",
+        "Zod"
       ]
     },
     {
       "title": "CDS Membership Portal – Dynamic & Secure Application System",
       "category": "Web Dev",
-      "liveUrl": "https://example.com",
+      "liveUrl": "https://membership.fuminds.com/",
       "description": "Citizen Development Society (CDS)-এর জন্য একটি ডায়নামিক, রেসপনসিভ এবং দ্বিভাষিক (বাংলা/ইংরেজি) মেম্বারশিপ অ্যাপ্লিকেশন পোর্টাল। এতে রয়েছে ফায়ারবেস (Firestore) ব্যাকএন্ড সিকিউরিটি, ডাবল সাবমিশন প্রতিরোধে ব্যাচ রাইট এবং অন-দ্য-ফ্লাই ট্রান্সলেটেড পিডিএফ জেনারেশন সুবিধা।",
       "tags": [
         "HTML5/CSS3",
-        "Bootstrap",
-        "JavaScript",
+        "Vanilla JS",
         "Firebase Firestore",
+        "Firebase Auth",
         "html2pdf.js"
       ]
     }
