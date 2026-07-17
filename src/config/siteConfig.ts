@@ -291,6 +291,14 @@ export const siteConfig = {
       "description": "Chrome extension to easily scan QR codes displayed on the screen and read their contents instantly without needing a mobile device.",
       "tags": ["Chrome Extension", "JavaScript", "QR Code", "HTML5"],
       "screenshots": []
+    },
+    {
+      "title": "Website Full Page Capturer",
+      "category": "Chrome Extension",
+      "liveUrl": "",
+      "description": "Browser extension (Chrome/Edge/Firefox — Manifest V3) that lets freelance web developers capture full-page screenshots of selected client website pages at project handoff. Features link auto-discovery from nav menus & CMS dashboards, manual page selection, scroll-and-stitch full-height capture with lazy-load handling, batch processing with live progress, and export as PNG/PDF/ZIP.",
+      "tags": ["Chrome Extension", "Manifest V3", "JavaScript", "Canvas API", "JSZip", "jsPDF", "Offscreen API"],
+      "screenshots": []
     }
   ],
   "certifications": [
