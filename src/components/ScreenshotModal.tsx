@@ -1,8 +1,6 @@
 import { useState, useEffect } from 'react';
-import { X, Smartphone, Tablet, Monitor, ChevronLeft, ChevronRight } from 'lucide-react';
+import { X, ChevronLeft, ChevronRight } from 'lucide-react';
 import { createPortal } from 'react-dom';
-
-type DeviceMode = 'mobile' | 'tablet' | 'desktop';
 
 interface ScreenshotModalProps {
   isOpen: boolean;
@@ -12,7 +10,6 @@ interface ScreenshotModalProps {
 }
 
 export default function ScreenshotModal({ isOpen, onClose, images, title }: ScreenshotModalProps) {
-  const [deviceMode, setDeviceMode] = useState<DeviceMode>('desktop');
   const [isAnimating, setIsAnimating] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -44,15 +41,7 @@ export default function ScreenshotModal({ isOpen, onClose, images, title }: Scre
   };
 
   const getImageContainerClasses = () => {
-    switch (deviceMode) {
-      case 'mobile':
-        return 'w-[375px] h-[667px] mx-auto rounded-3xl border-[12px] border-zinc-900 shadow-2xl relative overflow-y-auto overflow-x-hidden bg-zinc-900';
-      case 'tablet':
-        return 'w-[768px] h-[1024px] mx-auto rounded-3xl border-[16px] border-zinc-900 shadow-2xl relative overflow-y-auto overflow-x-hidden bg-zinc-900';
-      case 'desktop':
-      default:
-        return 'w-full h-full rounded-xl border border-zinc-800 shadow-2xl relative overflow-y-auto overflow-x-hidden bg-zinc-900/50';
-    }
+    return 'w-full h-full rounded-xl border border-zinc-800 shadow-2xl relative overflow-y-auto overflow-x-hidden bg-zinc-900/50 custom-scrollbar';
   };
 
   return createPortal(
@@ -78,31 +67,6 @@ export default function ScreenshotModal({ isOpen, onClose, images, title }: Scre
         </div>
         
         <div className="flex items-center gap-2">
-          {/* Device Toggles */}
-          <div className="flex items-center bg-zinc-900 rounded-lg p-1 mr-4 border border-zinc-800">
-            <button
-              onClick={() => setDeviceMode('mobile')}
-              className={`p-2 rounded-md transition-colors ${deviceMode === 'mobile' ? 'bg-[#22C55E]/20 text-[#22C55E]' : 'text-zinc-400 hover:text-white'}`}
-              title="Mobile (375x667)"
-            >
-              <Smartphone size={18} />
-            </button>
-            <button
-              onClick={() => setDeviceMode('tablet')}
-              className={`p-2 rounded-md transition-colors ${deviceMode === 'tablet' ? 'bg-[#22C55E]/20 text-[#22C55E]' : 'text-zinc-400 hover:text-white'}`}
-              title="Tablet (768x1024)"
-            >
-              <Tablet size={18} />
-            </button>
-            <button
-              onClick={() => setDeviceMode('desktop')}
-              className={`p-2 rounded-md transition-colors ${deviceMode === 'desktop' ? 'bg-[#22C55E]/20 text-[#22C55E]' : 'text-zinc-400 hover:text-white'}`}
-              title="Desktop (Full Width)"
-            >
-              <Monitor size={18} />
-            </button>
-          </div>
-          
           <button
             onClick={onClose}
             className="p-2 text-zinc-400 hover:text-white hover:bg-zinc-800 rounded-lg transition-colors"
