@@ -161,6 +161,7 @@ export default function ScreenshotModal({ isOpen, onClose, images, title }: Scre
           )}
         </div>
       </div>
-    </div>
+    </div>,
+    document.body
   );
 }
