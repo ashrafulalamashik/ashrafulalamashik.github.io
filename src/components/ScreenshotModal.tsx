@@ -12,12 +12,14 @@ interface ScreenshotModalProps {
 export default function ScreenshotModal({ isOpen, onClose, images, title }: ScreenshotModalProps) {
   const [isAnimating, setIsAnimating] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [isZoomed, setIsZoomed] = useState(false);
 
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = 'hidden';
       setIsAnimating(true);
       setCurrentIndex(0); // Reset index on open
+      setIsZoomed(false); // Reset zoom on open
     } else {
       document.body.style.overflow = '';
       const timer = setTimeout(() => setIsAnimating(false), 300);
@@ -41,7 +43,10 @@ export default function ScreenshotModal({ isOpen, onClose, images, title }: Scre
   };
 
   const getImageContainerClasses = () => {
-    return 'w-full h-full rounded-xl border border-zinc-800 shadow-2xl relative overflow-y-auto overflow-x-hidden bg-zinc-900/50 custom-scrollbar';
+    if (isZoomed) {
+      return 'w-full h-full rounded-xl border border-zinc-800 shadow-2xl relative overflow-y-auto overflow-x-hidden bg-zinc-900/50 custom-scrollbar';
+    }
+    return 'w-full h-full rounded-xl border border-zinc-800 shadow-2xl relative overflow-hidden flex items-center justify-center bg-zinc-900/50';
   };
 
   return createPortal(
@@ -87,7 +92,15 @@ export default function ScreenshotModal({ isOpen, onClose, images, title }: Scre
               <img 
                 src={images[currentIndex]} 
                 alt={`${title} screenshot ${currentIndex + 1}`}
-                className="w-full h-auto object-top min-h-full"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setIsZoomed(!isZoomed);
+                }}
+                className={`transition-all duration-300 ${
+                  isZoomed 
+                    ? 'w-full h-auto object-top min-h-full cursor-zoom-out' 
+                    : 'max-w-full max-h-full object-contain cursor-zoom-in'
+                }`}
               />
               
               {/* Navigation Arrows */}
