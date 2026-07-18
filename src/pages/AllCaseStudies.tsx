@@ -148,8 +148,8 @@ export default function AllCaseStudies() {
   const filteredCaseStudies = useMemo(() => {
     return (caseStudies || []).filter(cs => {
       const matchesSearch = cs.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                            cs.problem.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                            cs.solution.toLowerCase().includes(searchQuery.toLowerCase());
+                            (cs.problem || cs.summary || "").toLowerCase().includes(searchQuery.toLowerCase()) ||
+                            (cs.solution || cs.challenge?.description || "").toLowerCase().includes(searchQuery.toLowerCase());
       const matchesCategory = selectedCategory ? cs.category === selectedCategory : true;
       return matchesSearch && matchesCategory;
     });
