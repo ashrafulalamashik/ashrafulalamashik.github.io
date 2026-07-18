@@ -28,6 +28,8 @@ import {
   Code,
   Cpu,
   Github,
+  Image as ImageIcon,
+  BookOpen,
   Facebook,
   Twitter,
   Youtube,
@@ -45,6 +47,8 @@ import {
   type CarouselApi
 } from './components/ui/carousel';
 import siteConfig from './config/siteConfig';
+import ProjectPreviewModal from './components/ProjectPreviewModal';
+import ScreenshotModal from './components/ScreenshotModal';
 
 // Lazy-load page components for better initial load performance
 const SEOProposal = lazy(() => import('./pages/SEOProposal'));
@@ -293,21 +297,49 @@ function TypewriterText({ texts }: { texts: string[] }) {
 
 // Floating Stats Component
 function FloatingStats() {
+  const quickStats = siteConfig.about.quickStats;
   return (
-    <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-12">
-      {siteConfig.hero.stats.map((stat, index) => (
-        <div
-          key={index}
-          className="stat-card bg-zinc-900/50 backdrop-blur-sm border border-zinc-800 rounded-xl p-4 text-center hover:border-[#22C55E]/30 transition-all duration-300 hover:transform hover:scale-105"
-        >
-          {index === 0 && <TrendingUp className="w-6 h-6 text-[#22C55E] mx-auto mb-2" />}
-          {index === 1 && <Users className="w-6 h-6 text-[#22C55E] mx-auto mb-2" />}
-          {index === 2 && <Star className="w-6 h-6 text-[#22C55E] mx-auto mb-2" />}
-          {index === 3 && <Award className="w-6 h-6 text-[#22C55E] mx-auto mb-2" />}
-          <div className="text-2xl font-bold text-white">{stat.value}</div>
-          <div className="text-xs text-zinc-400">{stat.label}</div>
+    <div className="space-y-4 overflow-hidden relative w-full -mx-4 sm:-mx-0 px-4 sm:px-0">
+      
+      {/* Row 1: Right to Left */}
+      <div className="flex w-max hover:[animation-play-state:paused] animate-marquee">
+        <div className="flex">
+          {quickStats.slice(0, 6).map((stat, idx) => (
+            <div key={idx} className="bg-zinc-900/50 border border-zinc-800 rounded-xl p-4 hover:border-[#22C55E]/30 transition-colors flex-shrink-0 w-[160px] sm:w-[200px] mx-2 shadow-lg shadow-[#22C55E]/5 cursor-default text-center">
+              <div className="text-[#22C55E] text-xl sm:text-2xl font-bold mb-1">{stat.value}</div>
+              <div className="text-zinc-400 text-xs sm:text-sm whitespace-nowrap">{stat.label}</div>
+            </div>
+          ))}
         </div>
-      ))}
+        <div className="flex">
+          {quickStats.slice(0, 6).map((stat, idx) => (
+            <div key={`dup-${idx}`} className="bg-zinc-900/50 border border-zinc-800 rounded-xl p-4 hover:border-[#22C55E]/30 transition-colors flex-shrink-0 w-[160px] sm:w-[200px] mx-2 shadow-lg shadow-[#22C55E]/5 cursor-default text-center">
+              <div className="text-[#22C55E] text-xl sm:text-2xl font-bold mb-1">{stat.value}</div>
+              <div className="text-zinc-400 text-xs sm:text-sm whitespace-nowrap">{stat.label}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Row 2: Left to Right */}
+      <div className="flex w-max hover:[animation-play-state:paused] animate-marquee-reverse">
+        <div className="flex">
+          {quickStats.slice(6, 12).map((stat, idx) => (
+            <div key={idx} className="bg-zinc-900/50 border border-zinc-800 rounded-xl p-4 hover:border-[#22C55E]/30 transition-colors flex-shrink-0 w-[160px] sm:w-[200px] mx-2 shadow-lg shadow-[#22C55E]/5 cursor-default text-center">
+              <div className="text-[#22C55E] text-xl sm:text-2xl font-bold mb-1">{stat.value}</div>
+              <div className="text-zinc-400 text-xs sm:text-sm whitespace-nowrap">{stat.label}</div>
+            </div>
+          ))}
+        </div>
+        <div className="flex">
+          {quickStats.slice(6, 12).map((stat, idx) => (
+            <div key={`dup2-${idx}`} className="bg-zinc-900/50 border border-zinc-800 rounded-xl p-4 hover:border-[#22C55E]/30 transition-colors flex-shrink-0 w-[160px] sm:w-[200px] mx-2 shadow-lg shadow-[#22C55E]/5 cursor-default text-center">
+              <div className="text-[#22C55E] text-xl sm:text-2xl font-bold mb-1">{stat.value}</div>
+              <div className="text-zinc-400 text-xs sm:text-sm whitespace-nowrap">{stat.label}</div>
+            </div>
+          ))}
+        </div>
+      </div>
     </div>
   );
 }
@@ -317,6 +349,8 @@ function Home() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeCertImage, setActiveCertImage] = useState<string | null>(null);
   const [emblaApi, setEmblaApi] = useState<CarouselApi | null>(null);
+  const [previewData, setPreviewData] = useState<{isOpen: boolean, url: string, title: string}>({isOpen: false, url: '', title: ''});
+  const [screenshotData, setScreenshotData] = useState<{isOpen: boolean, images: string[], title: string}>({isOpen: false, images: [], title: ''});
 
   useEffect(() => {
     if (!emblaApi) return;
@@ -699,7 +733,7 @@ function Home() {
             </div>
           </div>
 
-          <div className="stats-section mt-16 sm:mt-24">
+          <div className="stats-section mt-8 sm:mt-12">
             <FloatingStats />
           </div>
         </div>
@@ -734,16 +768,6 @@ function Home() {
                 </p>
               ))}
               
-              <div className="grid grid-cols-2 gap-4 pt-4">
-                <div className="bg-zinc-900/50 border border-zinc-800 rounded-xl p-4 hover:border-[#22C55E]/30 transition-colors">
-                  <div className="text-[#22C55E] text-2xl font-bold">{about.quickStats[0].value}</div>
-                  <div className="text-zinc-400 text-sm">{about.quickStats[0].label}</div>
-                </div>
-                <div className="bg-zinc-900/50 border border-zinc-800 rounded-xl p-4 hover:border-[#22C55E]/30 transition-colors">
-                  <div className="text-[#22C55E] text-2xl font-bold">{about.quickStats[1].value}</div>
-                  <div className="text-zinc-400 text-sm">{about.quickStats[1].label}</div>
-                </div>
-              </div>
             </div>
           </div>
         </div>
@@ -854,13 +878,41 @@ function Home() {
             {siteConfig.projects && siteConfig.projects.slice(0, 4).map((project, index) => (
               <div 
                 key={index} 
-                className="project-card group bg-gradient-to-br from-zinc-900 to-zinc-950 border border-zinc-800 rounded-2xl p-6 sm:p-8 hover:border-[#22C55E]/50 transition-all duration-300 hover:shadow-xl hover:shadow-[#22C55E]/5 relative overflow-hidden flex flex-col justify-between"
+                className="project-item-card group bg-gradient-to-br from-zinc-900 to-zinc-950 border border-zinc-800 rounded-2xl p-6 sm:p-8 hover:border-[#22C55E]/50 transition-all duration-300 hover:shadow-xl hover:shadow-[#22C55E]/5 relative overflow-hidden flex flex-col justify-between"
               >
                 <div className="absolute inset-0 bg-gradient-to-br from-[#22C55E]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                <div className="relative">
-                  <div className="w-12 h-12 bg-gradient-to-br from-[#22C55E]/20 to-[#22C55E]/5 rounded-xl flex items-center justify-center mb-5 group-hover:scale-110 transition-transform">
-                    <Code className="text-[#22C55E]" size={24} />
+                
+                {/* Thumbnail Image */}
+                {(project as any).screenshots && (project as any).screenshots.length > 0 && (
+                  <div 
+                    className="w-full h-48 mb-6 rounded-xl overflow-hidden relative border border-zinc-800/50 cursor-pointer group-hover:border-[#22C55E]/30 transition-colors"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      e.stopPropagation();
+                      setScreenshotData({ isOpen: true, images: (project as any).screenshots, title: project.title });
+                    }}
+                  >
+                    <img 
+                      src={(project as any).screenshots[0]} 
+                      alt={project.title} 
+                      className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
+                    />
+                    <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center backdrop-blur-[2px]">
+                      <div className="bg-[#22C55E]/90 text-white p-3 rounded-full translate-y-4 group-hover:translate-y-0 transition-all duration-300 shadow-lg">
+                        <ImageIcon size={20} />
+                      </div>
+                    </div>
                   </div>
+                )}
+                
+                <div className="relative">
+                  {/* Show icon only if no screenshots */}
+                  {!((project as any).screenshots && (project as any).screenshots.length > 0) && (
+                    <div className="w-12 h-12 bg-gradient-to-br from-[#22C55E]/20 to-[#22C55E]/5 rounded-xl flex items-center justify-center mb-5 group-hover:scale-110 transition-transform">
+                      <Code className="text-[#22C55E]" size={24} />
+                    </div>
+                  )}
+                  
                   <h3 className="text-lg sm:text-xl font-bold mb-3 group-hover:text-[#22C55E] transition-colors">
                     {project.title}
                   </h3>
@@ -868,15 +920,71 @@ function Home() {
                     {project.description}
                   </p>
                 </div>
-                <div className="relative flex flex-wrap gap-2 mt-auto">
-                  {project.tags.map((tag, tIndex) => (
-                    <span 
-                      key={tIndex} 
-                      className="text-xs bg-zinc-800/80 text-zinc-300 border border-zinc-700/50 px-3 py-1.5 rounded-full"
-                    >
-                      {tag}
-                    </span>
-                  ))}
+                <div className="relative flex flex-col gap-4 mt-auto">
+                  <div className="flex flex-wrap gap-2">
+                    {project.tags.map((tag, tIndex) => (
+                      <span 
+                        key={tIndex} 
+                        className="text-xs bg-zinc-800/80 text-zinc-300 border border-zinc-700/50 px-3 py-1.5 rounded-full"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                  
+                  {/* Action Buttons */}
+                  <div className="flex flex-wrap items-center gap-2 sm:gap-3 pt-2">
+                    {/* See Site / View GitHub Button */}
+                    {(project as any).liveUrl && (
+                      <button
+                        onClick={(e) => {
+                          e.preventDefault();
+                          e.stopPropagation();
+                          const liveUrl = (project as any).liveUrl;
+                          if (liveUrl.includes('github.com')) {
+                            window.open(liveUrl, '_blank');
+                          } else {
+                            setPreviewData({ isOpen: true, url: liveUrl, title: project.title });
+                          }
+                        }}
+                        className="flex items-center gap-2 px-3 py-2 sm:px-4 sm:py-2 bg-zinc-900 text-white border border-zinc-700 hover:border-[#22C55E] hover:text-[#22C55E] rounded-lg text-sm font-medium transition-all group/btn z-20"
+                      >
+                        {((project as any).liveUrl || '').includes('github.com') ? (
+                          <Github size={16} className="group-hover/btn:-translate-y-0.5 group-hover/btn:translate-x-0.5 transition-transform" />
+                        ) : (
+                          <ExternalLink size={16} className="group-hover/btn:-translate-y-0.5 group-hover/btn:translate-x-0.5 transition-transform" />
+                        )}
+                        {((project as any).liveUrl || '').includes('github.com') ? 'GitHub' : 'Website'}
+                      </button>
+                    )}
+                    
+                    {/* View Case Study Button */}
+                    {(project as any).caseStudySlug && (
+                      <Link
+                        to={`/case-study/${(project as any).caseStudySlug}`}
+                        onClick={(e) => e.stopPropagation()}
+                        className="flex items-center gap-2 px-3 py-2 sm:px-4 sm:py-2 bg-zinc-900 text-[#22C55E] border border-[#22C55E]/30 hover:bg-[#22C55E]/10 rounded-lg text-sm font-medium transition-all group/btn z-20"
+                      >
+                        <BookOpen size={16} className="group-hover/btn:scale-110 transition-transform" />
+                        Case Study
+                      </Link>
+                    )}
+                    
+                    {/* View Screenshots Button */}
+                    {(project as any).screenshots && (project as any).screenshots.length > 0 && (
+                      <button
+                        onClick={(e) => {
+                          e.preventDefault();
+                          e.stopPropagation();
+                          setScreenshotData({ isOpen: true, images: (project as any).screenshots, title: project.title });
+                        }}
+                        className="flex items-center gap-2 px-3 py-2 sm:px-4 sm:py-2 bg-zinc-900 text-white border border-zinc-700 hover:border-[#22C55E] hover:text-[#22C55E] rounded-lg text-sm font-medium transition-all group/btn z-20"
+                      >
+                        <ImageIcon size={16} className="group-hover/btn:scale-110 transition-transform" />
+                        Gallery ({(project as any).screenshots.length})
+                      </button>
+                    )}
+                  </div>
                 </div>
               </div>
             ))}
@@ -1354,6 +1462,22 @@ function Home() {
           />
         </div>
       )}
+
+      {/* Project Preview Modal */}
+      <ProjectPreviewModal 
+        isOpen={previewData.isOpen} 
+        onClose={() => setPreviewData({ ...previewData, isOpen: false })} 
+        url={previewData.url} 
+        title={previewData.title} 
+      />
+
+      {/* Screenshot Modal */}
+      <ScreenshotModal 
+        isOpen={screenshotData.isOpen}
+        onClose={() => setScreenshotData({ ...screenshotData, isOpen: false })}
+        images={screenshotData.images}
+        title={screenshotData.title}
+      />
     </div>
   );
 }

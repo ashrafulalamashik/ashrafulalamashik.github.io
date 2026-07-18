@@ -7,7 +7,7 @@ export const siteConfig = {
     "shortName": "Ashik",
     "initials": "A",
     "role": "Digital Operations Manager & Full-Stack Web Developer",
-    "tagline": "Full-Stack Development · Digital Operations & SEO · Automation",
+    "tagline": "Full-Stack Architect · Digital Operations · Custom Web Platforms",
     "location": "Birgram, Kharna, Shajahanpur, Bogura-5800, Bangladesh",
     "phone": "+8801737940250",
     "email": "aa.ashik777@gmail.com",
@@ -49,10 +49,10 @@ export const siteConfig = {
   "hero": {
     "typewriterTexts": [
       "Full-Stack Developer",
-      "Operations Manager",
-      "Automation Expert",
-      "WordPress Developer",
-      "SEO Specialist"
+      "Digital Operations Manager",
+      "Web Platform Architect",
+      "Chrome Extension Builder",
+      "Security-First Coder"
     ],
     "stats": [
       {
@@ -73,66 +73,105 @@ export const siteConfig = {
       }
     ],
     "metadata": [
-      "Learner-oriented",
-      "3+ Years Experience"
+      "Security-First Developer",
+      "Tech & Ops Strategist"
     ]
   },
   "about": {
     "paragraphs": [
-      "Dynamic Digital Operations Manager and Full-Stack Web Developer with 3+ years of proven expertise in SEO optimization, team leadership, and digital operations, complemented by hands-on experience building secure, scalable web applications using Laravel, Next.js, and React. Successfully managed two operational branches and led cross-functional teams of 200+ professionals, while independently architecting and delivering full-stack platforms — from multi-vendor marketplaces to AI-powered booking systems. Committed to driving digital growth through data-driven strategies, clean code, and operational excellence.",
-      "Currently serving as Operation Manager at Future Minds Academy, where I oversee digital operations, website funnels, and process automation. I lead n8n-based operational automations and build robust full-stack solutions to optimize system and team performance."
+      "I'm Ashraful Alam Ashik — a Full-Stack Developer, Chrome Extension Builder, and Digital Operations specialist from Bogura, Bangladesh. Over the past 3+ years, I've gone from managing SEO for 200+ client accounts to independently architecting full-stack platforms — multi-vendor marketplaces, civic-tech portals, AI voice booking systems, custom ERPs, and browser extensions — for clients in e-commerce, healthcare, agriculture, and government sectors.",
+      "I currently serve as Operation Manager at Future Minds Academy (fuminds.com), where I oversee digital operations, process automation, SEO strategy, and website funnels — while simultaneously leading the technical development of complex web platforms and tools. My development approach is Security-First and OWASP-compliant, covering areas like HMAC-signed authentication, broken access control fixes, Redis-backed rate limiting, and secure multi-tenant architecture.",
+      "Whether it's a government-facing civic portal, a multi-vendor e-commerce marketplace, a Bengali AI voice assistant, or a productivity-focused Chrome Extension — I build solutions that are fast, secure, and designed to solve real problems."
     ],
     "quickStats": [
+      {
+        "value": "50+",
+        "label": "Projects Delivered"
+      },
+      {
+        "value": "4",
+        "label": "Chrome Extensions"
+      },
+      {
+        "value": "2",
+        "label": "Civic-Tech Portals"
+      },
+      {
+        "value": "100%",
+        "label": "OWASP Compliant"
+      },
+      {
+        "value": "3+ Years",
+        "label": "Dev Experience"
+      },
+      {
+        "value": "10+",
+        "label": "Web Architectures"
+      },
+      {
+        "value": "30+",
+        "label": "Happy Clients"
+      },
       {
         "value": "200+",
         "label": "Team Members Managed"
       },
       {
+        "value": "24/7",
+        "label": "Automated Workflows"
+      },
+      {
+        "value": "10+",
+        "label": "SEO Campaigns"
+      },
+      {
         "value": "2",
         "label": "Branches Managed"
+      },
+      {
+        "value": "100%",
+        "label": "Client Satisfaction"
       }
     ],
     "aboutImgPath": "Passport pic.png"
   },
   "experience": {
     "current": {
-      "title": "Operation Manager",
+      "title": "Operation Manager & Lead Developer",
       "company": "Future Minds Academy",
-      "period": "2025 Nov– Present ",
+      "period": "Nov 2025 – Present",
       "location": "Bogura, Bangladesh",
       "description": [
-        "Operating under personal freelance brand ‘fuminds.com’, delivering web development and digital consulting services to clients across Bangladesh.",
+        "Overseeing all digital operations, content workflows, SEO strategy, and performance monitoring across multiple channels — while simultaneously leading the full-stack development of client-facing platforms under fuminds.com.",
+        "Architected and delivered Future Shop — a zero-trust multi-vendor e-commerce marketplace (Laravel 12, Next.js 16, Redis, PostgreSQL) with Redis-backed OTP lockout, pessimistic stock locking, and zero vulnerabilities in Sanctum authentication.",
+        "Built two live civic-tech platforms for a sitting Member of Parliament: জনসংযোগ ২৪/৭ (MP Civic Engagement Portal) and MP-Tracker — a 600,000+ voter-record management system — giving thousands of constituents 24/7 digital access.",
         "Implemented HMAC-SHA256 signed session tokens, broken access control fixes, and OWASP-compliant security hardening on live government-facing applications.",
-        "Managed end-to-end client relationships including requirement gathering, architecture design, deployment on Hostinger VPS, and post-launch support.",
-        "Built and maintained multiple client websites; conducted WordPress malware remediation and security hardening across production sites.",
-        "Overseeing all digital operations, content workflow, and performance monitoring across multiple channels.",
-        "Leading SEO strategy, website management, and automation-based operational improvements.",
-        "Developing conversion-focused website funnels resulting in improved student enrollment and sign-ups.",
-        "Managing cross-functional teams to ensure consistent, high-quality digital service delivery."
+        "Engineered a Bengali-language AI voice appointment system (VAPI.ai + n8n) allowing hospital patients to book appointments by phone with zero human operators.",
+        "Published 4 Chrome Extensions (Manifest V3): full-page screenshot capture, QR screen scanner, CSS design inspector, and on-the-fly image format converter.",
+        "Developed conversion-focused website funnels resulting in improved student enrollment and sign-ups; managed end-to-end client relationships from requirement gathering to post-launch support on Hostinger VPS."
       ]
     },
     "previous": [
       {
-        "title": "Assistant Operation ",
+        "title": "Assistant Operation",
         "company": "SEO Expate Bangladesh Ltd.",
-        "period": "2023 Nov – 2025 Oct",
+        "period": "Nov 2023 – Oct 2025",
         "location": "Bogura, Bangladesh",
         "description": [
-          "Managed daily operational tasks, SEO campaign executions, and WordPress site performance reviews",
-          "Improved organic visibility and technical performance across academy landing pages",
-          "Set up initial operational tracking and analytics integrations"
+          "Managed daily operational tasks, SEO campaign execution, and WordPress site performance reviews across multiple client accounts",
+          "Improved organic visibility and technical performance across landing pages through data-driven SEO strategies",
+          "Set up operational tracking, analytics integrations, and automation workflows using n8n to streamline team processes"
         ]
       },
       {
         "title": "SEO In-Charge",
         "company": "SEO Expate Bangladesh Ltd.",
-        "period": "2023 - 2025",
+        "period": "2023",
         "location": "Bogura, Bangladesh",
         "description": [
-          "Managed SEO operations and supervised 200+ professionals, ensuring top-quality project execution and team performance",
-          "Implemented advanced Technical SEO strategies, resulting in significant improvements in search rankings and organic traffic",
-          "Designed and customized WordPress websites with PHP-based solutions and landing pages for diverse client portfolios",
-          "Developed automation workflows using n8n, streamlining marketing processes and enhancing operational efficiency",
+          "Supervised a 200+ person SEO team, overseeing quality control, project execution, and client satisfaction",
+          "Implemented advanced Technical SEO strategies that measurably improved search visibility and organic traffic for diverse client portfolios",
+          "Designed and customized WordPress websites with PHP-based solutions, landing pages, and custom plugin configurations",
           "Conducted comprehensive website audits, resolved critical technical issues, and delivered projects exceeding client expectations"
         ]
       }
