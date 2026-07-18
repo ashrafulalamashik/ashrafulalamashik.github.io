@@ -403,10 +403,15 @@ export const siteConfig = {
   ],
   "caseStudies": [
     {
+        
         "slug": "design-inspector",
         "image": "",
         "category": "Chrome Extension",
         "title": "Design Inspector — Glass Edition",
+        "problem": "Designers and developers lack a unified, visually appealing tool to inspect web design properties directly on the page without dealing with raw DevTools data.",
+        "solution": "Built a Manifest V3 Chrome extension with a stunning glassmorphism Side Panel to instantly extract typography, colors, and audit accessibility.",
+        "results": ["2,200+ Lines of Vanilla JS/CSS", "50+ Token Design System", "Manifest V3 Compliant"],
+
         "subtitle": "A premium Chrome extension that transforms any webpage into an inspectable design canvas with a glassmorphism UI.",
         "role": "Solo Developer & Designer",
         "status": "Completed & Production-Ready",
