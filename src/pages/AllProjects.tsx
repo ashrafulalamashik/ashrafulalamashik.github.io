@@ -364,26 +364,28 @@ export default function AllProjects() {
                   {/* Action Buttons */}
                   <div className="flex flex-wrap items-center gap-2 sm:gap-3 pt-2">
                     {/* See Site / View GitHub Button */}
-                    <button
-                      onClick={(e) => {
-                        e.preventDefault();
-                        e.stopPropagation();
-                        const liveUrl = (project as any).liveUrl || 'https://example.com';
-                        if (liveUrl.includes('github.com')) {
-                          window.open(liveUrl, '_blank');
-                        } else {
-                          setPreviewData({ isOpen: true, url: liveUrl, title: project.title });
-                        }
-                      }}
-                      className="flex items-center gap-2 px-3 py-2 sm:px-4 sm:py-2 bg-zinc-900 text-white border border-zinc-700 hover:border-[#22C55E] hover:text-[#22C55E] rounded-lg text-sm font-medium transition-all group/btn z-20"
-                    >
-                      {((project as any).liveUrl || '').includes('github.com') ? (
-                        <Github size={16} className="group-hover/btn:-translate-y-0.5 group-hover/btn:translate-x-0.5 transition-transform" />
-                      ) : (
-                        <ExternalLink size={16} className="group-hover/btn:-translate-y-0.5 group-hover/btn:translate-x-0.5 transition-transform" />
-                      )}
-                      {((project as any).liveUrl || '').includes('github.com') ? 'GitHub' : 'Website'}
-                    </button>
+                    {(project as any).liveUrl && (
+                      <button
+                        onClick={(e) => {
+                          e.preventDefault();
+                          e.stopPropagation();
+                          const liveUrl = (project as any).liveUrl;
+                          if (liveUrl.includes('github.com')) {
+                            window.open(liveUrl, '_blank');
+                          } else {
+                            setPreviewData({ isOpen: true, url: liveUrl, title: project.title });
+                          }
+                        }}
+                        className="flex items-center gap-2 px-3 py-2 sm:px-4 sm:py-2 bg-zinc-900 text-white border border-zinc-700 hover:border-[#22C55E] hover:text-[#22C55E] rounded-lg text-sm font-medium transition-all group/btn z-20"
+                      >
+                        {((project as any).liveUrl || '').includes('github.com') ? (
+                          <Github size={16} className="group-hover/btn:-translate-y-0.5 group-hover/btn:translate-x-0.5 transition-transform" />
+                        ) : (
+                          <ExternalLink size={16} className="group-hover/btn:-translate-y-0.5 group-hover/btn:translate-x-0.5 transition-transform" />
+                        )}
+                        {((project as any).liveUrl || '').includes('github.com') ? 'GitHub' : 'Website'}
+                      </button>
+                    )}
                     
                     {/* View Case Study Button */}
                     {(project as any).caseStudySlug && (
