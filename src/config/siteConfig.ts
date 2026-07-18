@@ -238,21 +238,22 @@ export const siteConfig = {
         "PostgreSQL"
       ],
       "caseStudySlug": "jonoshongog-portal",
-      "image": "/assets/screenshots/jonoshongog-portal/mockup.png",
+      "image": "/assets/screenshots/comilla10/Homepage.png",
       "screenshots": [
-        "/assets/screenshots/jonoshongog-portal/mockup.png"
-      ]
-    },
-    {
-      "title": "AI Voice Appointment Booking System",
-      "category": "n8n Automation",
-      "liveUrl": "",
-      "description": "Bengali-language voice AI assistant that lets hospital patients book appointments entirely by phone, with no human operator needed. Built using VAPI.ai, n8n automation, and live calendar integration.",
-      "tags": [
-        "VAPI.ai",
-        "n8n",
-        "AI/Voice",
-        "Calendar Integration"
+        "/assets/screenshots/comilla10/Homepage.png",
+        "/assets/screenshots/comilla10/complaint page.png",
+        "/assets/screenshots/comilla10/suggestion page.png",
+        "/assets/screenshots/comilla10/idea.png",
+        "/assets/screenshots/comilla10/tracking page.png",
+        "/assets/screenshots/comilla10/Admin Panel login.png",
+        "/assets/screenshots/comilla10/comilla10-fuminds-com-dashboard_2026-07-18_22-24_page1.png",
+        "/assets/screenshots/comilla10/comilla10-fuminds-com-dashboard-complaints_2026-07-18_22-24_page2.png",
+        "/assets/screenshots/comilla10/comilla10-fuminds-com-dashboard-suggestions_2026-07-18_22-24_page3.png",
+        "/assets/screenshots/comilla10/comilla10-fuminds-com-dashboard-ideas_2026-07-18_22-24_page4.png",
+        "/assets/screenshots/comilla10/comilla10-fuminds-com-dashboard-projects_2026-07-18_22-24_page5.png",
+        "/assets/screenshots/comilla10/comilla10-fuminds-com-dashboard-news_2026-07-18_22-24_page6.png",
+        "/assets/screenshots/comilla10/comilla10-fuminds-com-dashboard-categories_2026-07-18_22-24_page7.png",
+        "/assets/screenshots/comilla10/comilla10-fuminds-com-dashboard-users_2026-07-18_22-24_page8.png"
       ]
     },
     {
@@ -1365,28 +1366,28 @@ export const siteConfig = {
   ],
   "whyWorkWithMe": [
     {
-      "title": "Proven Leadership Experience",
-      "description": "Managed 200+ professionals across two operational branches. I understand how to lead teams and deliver results at scale."
+      "title": "Security-First Architecture",
+      "description": "Building applications with OWASP compliance, secure session management, and strict access controls to ensure enterprise-grade security."
     },
     {
-      "title": "Full-Stack Digital Expertise",
-      "description": "From SEO strategy to WordPress development to digital operations—I handle the complete digital ecosystem."
+      "title": "End-to-End Web Solutions",
+      "description": "From conceptualizing web architectures and React frontends to robust Node/Express backends and VPS deployments."
     },
     {
-      "title": "Web Development & Automation",
-      "description": "Full-Stack Application Development (Laravel, Next.js, React), Database Design (PostgreSQL/MySQL), API Development & Integration"
+      "title": "Custom Chrome Extensions",
+      "description": "Developing tailored browser extensions that seamlessly integrate with complex workflows and APIs to boost productivity."
     },
     {
-      "title": "Data-Driven Approach",
-      "description": "Every decision is backed by analytics and focused on measurable ROI for your business."
+      "title": "Digital Operations Management",
+      "description": "Streamlining team workflows, managing cross-functional projects, and overseeing SEO strategy for maximum ROI."
     },
     {
-      "title": "Automation & Efficiency",
-      "description": "Expert in n8n workflows and process automation to streamline operations and reduce manual work."
+      "title": "Advanced Workflow Automation",
+      "description": "Leveraging tools like n8n and custom scripts to eliminate repetitive tasks and scale business operations effortlessly."
     },
     {
-      "title": "International Client Experience",
-      "description": "Experience working with clients from USA, UK, and other international markets with clear communication."
+      "title": "Proven International Experience",
+      "description": "Successfully managed and delivered custom web platforms and consulting services for clients globally."
     }
   ],
   "seoProposal": {
