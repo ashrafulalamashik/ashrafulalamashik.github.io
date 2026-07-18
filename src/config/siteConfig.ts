@@ -166,6 +166,11 @@ export const siteConfig = {
         "AWS S3",
         "Redis"
       ],
+      "caseStudySlug": "future-shop",
+      "image": "/assets/screenshots/future-shop/mockup.png",
+      "screenshots": [
+        "/assets/screenshots/future-shop/mockup.png"
+      ],
       "screenshots": [
         "/assets/screenshots/future-shop/Homepage.png",
         "/assets/screenshots/future-shop/Categories.png",
@@ -194,6 +199,11 @@ export const siteConfig = {
         "Tailwind CSS 4",
         "Prisma",
         "PostgreSQL"
+      ],
+      "caseStudySlug": "jonoshongog-portal",
+      "image": "/assets/screenshots/jonoshongog-portal/mockup.png",
+      "screenshots": [
+        "/assets/screenshots/jonoshongog-portal/mockup.png"
       ]
     },
     {
@@ -235,9 +245,14 @@ export const siteConfig = {
     },
     {
       "title": "Esports Tournament Platform",
+      "caseStudySlug": "esports-tournament-platform",
       "category": "Web Dev",
       "liveUrl": "",
       "description": "Free Fire esports tournament portal with user registration, paid matches, bKash/Nagad wallet transactions, and a robust admin dashboard. Built with Next.js, Supabase, Zod, and Cloudinary.",
+      "image": "/assets/screenshots/esports-tournament-platform/mockup.png",
+      "screenshots": [
+        "/assets/screenshots/esports-tournament-platform/mockup.png"
+      ],
       "tags": [
         "Next.js",
         "TypeScript",
@@ -248,6 +263,8 @@ export const siteConfig = {
     },
     {
       "title": "কীটনাশক দোকান ERP (Pesticide Retail ERP)",
+      "caseStudySlug": "pesticide-erp",
+      "image": "/assets/screenshots/pesticide-erp/mockup.png",
       "category": "Web Dev",
       "liveUrl": "https://appletraders.store/",
       "description": "কীটনাশক ও কৃষি রাসায়নিক খুচরা দোকানের জন্য সম্পূর্ণ বাংলা UI সম্বলিত ERP Web Application। এটি একক ব্যবহারকারীর (দোকান মালিক) জন্য SQLite (better-sqlite3), Next.js 14, এবং Tailwind CSS দিয়ে তৈরি। এতে রয়েছে বাকি লেনদেন ট্র্যাকিং, অটোমেটিক ব্যাকআপ এবং পিডিএফ রশিদ জেনারেশন সুবিধা।",
@@ -272,6 +289,8 @@ export const siteConfig = {
     },
     {
       "title": "CDS Membership Portal – Dynamic & Secure Application System",
+      "caseStudySlug": "cds-membership-portal",
+      "image": "/assets/screenshots/cds-membership-portal/mockup.png",
       "category": "Web Dev",
       "liveUrl": "https://membership.fuminds.com/",
       "description": "Citizen Development Society (CDS)-এর জন্য একটি ডায়নামিক, রেসপনসিভ এবং দ্বিভাষিক (বাংলা/ইংরেজি) মেম্বারশিপ অ্যাপ্লিকেশন পোর্টাল। এতে রয়েছে ফায়ারবেস (Firestore) ব্যাকএন্ড সিকিউরিটি, ডাবল সাবমিশন প্রতিরোধে ব্যাচ রাইট এবং অন-দ্য-ফ্লাই ট্রান্সলেটেড পিডিএফ জেনারেশন সুবিধা।",
@@ -321,6 +340,7 @@ export const siteConfig = {
   "certifications": [
     {
       "title": "Search Engine Optimization (SEO)",
+      "caseStudySlug": "local-retail-seo",
       "issuer": "SEO Expate Bangladesh Ltd.",
       "year": "2023",
       "icon": "seo",
@@ -328,6 +348,7 @@ export const siteConfig = {
     },
     {
       "title": "Website Design & WordPress Customization",
+      "caseStudySlug": "corporate-redesign",
       "issuer": "Institute of Technical & IT",
       "year": "2024",
       "icon": "web",
@@ -635,7 +656,7 @@ export const siteConfig = {
   },
     {
       "slug": "future-shop",
-      "image": "",
+      "image": "/assets/screenshots/future-shop/mockup.png",
       "category": "E-COMMERCE & DEVSECOPS",
       "title": "Future Shop: Secure Multi-Vendor Marketplace",
       "problem": "Traditional local retail models in Bogura lack secure, scalable, mobile-first marketplace infrastructure, exposing transactions and inventory to exploits.",
@@ -745,7 +766,7 @@ export const siteConfig = {
     },
     {
       "slug": "jonoshongog-portal",
-      "image": "",
+      "image": "/assets/screenshots/jonoshongog-portal/mockup.png",
       "category": "CIVIC TECH & FULL-STACK",
       "title": "জনসংযোগ ২৪/৭: MP Constituency Engagement Portal",
       "subtitle": "A secure, bilingual civic tech platform connecting an elected MP with thousands of constituents in real time",
@@ -849,7 +870,7 @@ export const siteConfig = {
     },
     {
       "slug": "local-retail-seo",
-      "image": "",
+      "image": "/assets/screenshots/local-retail-seo/mockup.png",
       "category": "E-COMMERCE",
       "title": "E-commerce SEO Optimization for Local Retailer",
       "problem": "A local retail client was struggling with low organic visibility, poor site speed (8+ seconds load time), and zero conversions from organic traffic.",
@@ -924,7 +945,7 @@ export const siteConfig = {
     },
     {
       "slug": "corporate-redesign",
-      "image": "",
+      "image": "/assets/screenshots/corporate-redesign/mockup.png",
       "category": "CORPORATE",
       "title": "Corporate Website Redesign for Service Company",
       "problem": "A B2B service company had an outdated website with poor mobile experience, high bounce rate (78%), and low lead generation.",
@@ -999,7 +1020,7 @@ export const siteConfig = {
     },
     {
       "slug": "esports-tournament-platform",
-      "image": "",
+      "image": "/assets/screenshots/esports-tournament-platform/mockup.png",
       "category": "GAME TECH & NEXT.JS",
       "title": "Esports Tournament Platform: Secure Free Fire Match Portal",
       "subtitle": "A secure, low-latency Free Fire tournament portal with instant wallet management and role-based route protection.",
@@ -1097,7 +1118,7 @@ export const siteConfig = {
     },
     {
       "slug": "pesticide-erp",
-      "image": "",
+      "image": "/assets/screenshots/pesticide-erp/mockup.png",
       "category": "AGRICULTURAL ERP & NEXT.JS",
       "title": "কীটনাশক দোকান ERP: Pesticide Shop Enterprise Management System",
       "subtitle": "একটি দীর্ঘস্থায়ী খুচরা কীটনাশক দোকানের সম্পূর্ণ বাংলা ইআরপি ও বকেয়া ট্র্যাকিং সিস্টেম",
@@ -1186,7 +1207,7 @@ export const siteConfig = {
     },
     {
       "slug": "cds-membership-portal",
-      "image": "",
+      "image": "/assets/screenshots/cds-membership-portal/mockup.png",
       "category": "CIVIC PORTAL & FIREBASE",
       "title": "CDS Membership Portal: Dynamic & Secure Application System",
       "subtitle": "দ্বিভাষিক ট্রান্সলেশন এবং ফায়ারবেস সিকিউরিটিসহ একটি ডায়নামিক মেম্বারশিপ ফর্ম",
