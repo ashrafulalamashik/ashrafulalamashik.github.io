@@ -167,7 +167,7 @@ export const siteConfig = {
         "Redis"
       ],
       "caseStudySlug": "future-shop",
-      "image": "/assets/screenshots/future-shop/mockup.png",
+      "image": "/assets/screenshots/future-shop/Homepage.png",
       "screenshots": [
         "/assets/screenshots/future-shop/mockup.png",
         "/assets/screenshots/future-shop/Homepage.png",
@@ -262,7 +262,7 @@ export const siteConfig = {
     {
       "title": "কীটনাশক দোকান ERP (Pesticide Retail ERP)",
       "caseStudySlug": "pesticide-erp",
-      "image": "/assets/screenshots/pesticide-erp/mockup.png",
+      "image": "/assets/screenshots/pesticide-erp/dashboard.png",
       "category": "Web Dev",
       "liveUrl": "https://appletraders.store/",
       "description": "কীটনাশক ও কৃষি রাসায়নিক খুচরা দোকানের জন্য সম্পূর্ণ বাংলা UI সম্বলিত ERP Web Application। এটি একক ব্যবহারকারীর (দোকান মালিক) জন্য SQLite (better-sqlite3), Next.js 14, এবং Tailwind CSS দিয়ে তৈরি। এতে রয়েছে বাকি লেনদেন ট্র্যাকিং, অটোমেটিক ব্যাকআপ এবং পিডিএফ রশিদ জেনারেশন সুবিধা।",
@@ -288,7 +288,7 @@ export const siteConfig = {
     {
       "title": "CDS Membership Portal – Dynamic & Secure Application System",
       "caseStudySlug": "cds-membership-portal",
-      "image": "/assets/screenshots/cds-membership-portal/mockup.png",
+      "image": "/assets/screenshots/cds-membership/Homepage.png",
       "category": "Web Dev",
       "liveUrl": "https://membership.fuminds.com/",
       "description": "Citizen Development Society (CDS)-এর জন্য একটি ডায়নামিক, রেসপনসিভ এবং দ্বিভাষিক (বাংলা/ইংরেজি) মেম্বারশিপ অ্যাপ্লিকেশন পোর্টাল। এতে রয়েছে ফায়ারবেস (Firestore) ব্যাকএন্ড সিকিউরিটি, ডাবল সাবমিশন প্রতিরোধে ব্যাচ রাইট এবং অন-দ্য-ফ্লাই ট্রান্সলেটেড পিডিএফ জেনারেশন সুবিধা।",
@@ -654,7 +654,7 @@ export const siteConfig = {
   },
     {
       "slug": "future-shop",
-      "image": "/assets/screenshots/future-shop/mockup.png",
+      "image": "/assets/screenshots/future-shop/Homepage.png",
       "category": "E-COMMERCE & DEVSECOPS",
       "title": "Future Shop: Secure Multi-Vendor Marketplace",
       "problem": "Traditional local retail models in Bogura lack secure, scalable, mobile-first marketplace infrastructure, exposing transactions and inventory to exploits.",
@@ -1116,7 +1116,7 @@ export const siteConfig = {
     },
     {
       "slug": "pesticide-erp",
-      "image": "/assets/screenshots/pesticide-erp/mockup.png",
+      "image": "/assets/screenshots/pesticide-erp/dashboard.png",
       "category": "AGRICULTURAL ERP & NEXT.JS",
       "title": "কীটনাশক দোকান ERP: Pesticide Shop Enterprise Management System",
       "subtitle": "একটি দীর্ঘস্থায়ী খুচরা কীটনাশক দোকানের সম্পূর্ণ বাংলা ইআরপি ও বকেয়া ট্র্যাকিং সিস্টেম",
@@ -1205,7 +1205,7 @@ export const siteConfig = {
     },
     {
       "slug": "cds-membership-portal",
-      "image": "/assets/screenshots/cds-membership-portal/mockup.png",
+      "image": "/assets/screenshots/cds-membership/Homepage.png",
       "category": "CIVIC PORTAL & FIREBASE",
       "title": "CDS Membership Portal: Dynamic & Secure Application System",
       "subtitle": "দ্বিভাষিক ট্রান্সলেশন এবং ফায়ারবেস সিকিউরিটিসহ একটি ডায়নামিক মেম্বারশিপ ফর্ম",
