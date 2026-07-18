@@ -283,7 +283,10 @@ export const siteConfig = {
       "liveUrl": "https://github.com/ashrafulalamashik/design-css-inspector",
       "description": "Chrome Extension to inspect CSS designs, colors, typography, and spacing on any web page. Easily copy CSS properties and analyze web designs.",
       "tags": ["Chrome Extension", "JavaScript", "CSS", "HTML5"],
-      "screenshots": []
+      "image": "/assets/screenshots/design-inspector/mockup.png",
+      "screenshots": [
+        "/assets/screenshots/design-inspector/mockup.png"
+      ]
     },
     {
       "title": "QR Screen Scanner",
@@ -406,7 +409,7 @@ export const siteConfig = {
     {
         
         "slug": "design-inspector",
-        "image": "",
+        "image": "/assets/screenshots/design-inspector/mockup.png",
         "category": "Chrome Extension",
         "title": "Design Inspector — Glass Edition",
         "problem": "Designers and developers lack a unified, visually appealing tool to inspect web design properties directly on the page without dealing with raw DevTools data.",
