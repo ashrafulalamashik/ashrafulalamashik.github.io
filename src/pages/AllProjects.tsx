@@ -362,7 +362,7 @@ export default function AllProjects() {
                   </div>
                   
                   {/* Action Buttons */}
-                  <div className="flex items-center gap-3 pt-2">
+                  <div className="flex flex-wrap items-center gap-2 sm:gap-3 pt-2">
                     {/* See Site / View GitHub Button */}
                     <button
                       onClick={(e) => {
@@ -375,14 +375,14 @@ export default function AllProjects() {
                           setPreviewData({ isOpen: true, url: liveUrl, title: project.title });
                         }
                       }}
-                      className="flex items-center gap-2 px-4 py-2 bg-zinc-900 text-white border border-zinc-700 hover:border-[#22C55E] hover:text-[#22C55E] rounded-lg text-sm font-medium transition-all group/btn z-20"
+                      className="flex items-center gap-2 px-3 py-2 sm:px-4 sm:py-2 bg-zinc-900 text-white border border-zinc-700 hover:border-[#22C55E] hover:text-[#22C55E] rounded-lg text-sm font-medium transition-all group/btn z-20"
                     >
                       {((project as any).liveUrl || '').includes('github.com') ? (
                         <Github size={16} className="group-hover/btn:-translate-y-0.5 group-hover/btn:translate-x-0.5 transition-transform" />
                       ) : (
                         <ExternalLink size={16} className="group-hover/btn:-translate-y-0.5 group-hover/btn:translate-x-0.5 transition-transform" />
                       )}
-                      {((project as any).liveUrl || '').includes('github.com') ? 'View GitHub' : 'See Site'}
+                      {((project as any).liveUrl || '').includes('github.com') ? 'GitHub' : 'Website'}
                     </button>
                     
                     {/* View Case Study Button */}
@@ -390,7 +390,7 @@ export default function AllProjects() {
                       <Link
                         to={`/case-study/${(project as any).caseStudySlug}`}
                         onClick={(e) => e.stopPropagation()}
-                        className="flex items-center gap-2 px-4 py-2 bg-zinc-900 text-[#22C55E] border border-[#22C55E]/30 hover:bg-[#22C55E]/10 rounded-lg text-sm font-medium transition-all group/btn z-20"
+                        className="flex items-center gap-2 px-3 py-2 sm:px-4 sm:py-2 bg-zinc-900 text-[#22C55E] border border-[#22C55E]/30 hover:bg-[#22C55E]/10 rounded-lg text-sm font-medium transition-all group/btn z-20"
                       >
                         <BookOpen size={16} className="group-hover/btn:scale-110 transition-transform" />
                         Case Study
@@ -405,10 +405,10 @@ export default function AllProjects() {
                           e.stopPropagation();
                           setScreenshotData({ isOpen: true, images: (project as any).screenshots, title: project.title });
                         }}
-                        className="flex items-center gap-2 px-4 py-2 bg-zinc-900 text-white border border-zinc-700 hover:border-[#22C55E] hover:text-[#22C55E] rounded-lg text-sm font-medium transition-all group/btn z-20"
+                        className="flex items-center gap-2 px-3 py-2 sm:px-4 sm:py-2 bg-zinc-900 text-white border border-zinc-700 hover:border-[#22C55E] hover:text-[#22C55E] rounded-lg text-sm font-medium transition-all group/btn z-20"
                       >
                         <ImageIcon size={16} className="group-hover/btn:scale-110 transition-transform" />
-                        Screenshots ({(project as any).screenshots.length})
+                        Gallery ({(project as any).screenshots.length})
                       </button>
                     )}
                   </div>
