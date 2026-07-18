@@ -324,7 +324,11 @@ export const siteConfig = {
       "liveUrl": "https://github.com/ashrafulalamashik/qr-screen-scanner",
       "description": "Chrome extension to easily scan QR codes displayed on the screen and read their contents instantly without needing a mobile device.",
       "tags": ["Chrome Extension", "JavaScript", "QR Code", "HTML5"],
-      "screenshots": []
+      "caseStudySlug": "qr-screen-scanner",
+      "image": "/assets/screenshots/qr-screen-scanner/mockup.png",
+      "screenshots": [
+        "/assets/screenshots/qr-screen-scanner/mockup.png"
+      ]
     },
     {
       "title": "Website Full Page Capturer",
