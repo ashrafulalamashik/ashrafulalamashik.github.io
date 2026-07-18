@@ -293,18 +293,20 @@ export default function AllCaseStudies() {
                       </div>
                       
                       {/* Action Button */}
-                      <button
-                        onClick={(e) => {
-                          e.preventDefault();
-                          e.stopPropagation();
-                          const liveUrl = (study as any).liveUrl || 'https://example.com';
-                          setPreviewData({ isOpen: true, url: liveUrl, title: study.title });
-                        }}
-                        className="flex-shrink-0 flex items-center gap-2 px-3 py-2 bg-zinc-900 text-white border border-zinc-700 hover:border-[#22C55E] hover:text-[#22C55E] rounded-lg text-sm font-medium transition-all group/btn z-20 self-end mt-4 sm:mt-0"
-                      >
-                        <ExternalLink size={16} className="group-hover/btn:-translate-y-0.5 group-hover/btn:translate-x-0.5 transition-transform" />
-                        See Site
-                      </button>
+                      {(study as any).liveUrl && (
+                        <button
+                          onClick={(e) => {
+                            e.preventDefault();
+                            e.stopPropagation();
+                            const liveUrl = (study as any).liveUrl;
+                            setPreviewData({ isOpen: true, url: liveUrl, title: study.title });
+                          }}
+                          className="flex-shrink-0 flex items-center gap-2 px-3 py-2 bg-zinc-900 text-white border border-zinc-700 hover:border-[#22C55E] hover:text-[#22C55E] rounded-lg text-sm font-medium transition-all group/btn z-20 self-end mt-4 sm:mt-0"
+                        >
+                          <ExternalLink size={16} className="group-hover/btn:-translate-y-0.5 group-hover/btn:translate-x-0.5 transition-transform" />
+                          See Site
+                        </button>
+                      )}
                     </div>
                   </div>
                 </div>
