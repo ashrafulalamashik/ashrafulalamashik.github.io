@@ -6,7 +6,9 @@ import {
   Search, 
   Code,
   ExternalLink,
-  Image as ImageIcon
+  Image as ImageIcon,
+  Github,
+  BookOpen
 } from 'lucide-react';
 import siteConfig from '../config/siteConfig';
 import ProjectPreviewModal from '../components/ProjectPreviewModal';
@@ -361,20 +363,39 @@ export default function AllProjects() {
                   
                   {/* Action Buttons */}
                   <div className="flex items-center gap-3 pt-2">
-                    {/* View Details is currently not implemented for projects (no individual project page), so we just add the See Site button */}
+                    {/* See Site / View GitHub Button */}
                     <button
                       onClick={(e) => {
                         e.preventDefault();
                         e.stopPropagation();
-                        // Open the modal with the liveUrl if it exists, otherwise use a placeholder
                         const liveUrl = (project as any).liveUrl || 'https://example.com';
-                        setPreviewData({ isOpen: true, url: liveUrl, title: project.title });
+                        if (liveUrl.includes('github.com')) {
+                          window.open(liveUrl, '_blank');
+                        } else {
+                          setPreviewData({ isOpen: true, url: liveUrl, title: project.title });
+                        }
                       }}
                       className="flex items-center gap-2 px-4 py-2 bg-zinc-900 text-white border border-zinc-700 hover:border-[#22C55E] hover:text-[#22C55E] rounded-lg text-sm font-medium transition-all group/btn z-20"
                     >
-                      <ExternalLink size={16} className="group-hover/btn:-translate-y-0.5 group-hover/btn:translate-x-0.5 transition-transform" />
-                      See Site
+                      {((project as any).liveUrl || '').includes('github.com') ? (
+                        <Github size={16} className="group-hover/btn:-translate-y-0.5 group-hover/btn:translate-x-0.5 transition-transform" />
+                      ) : (
+                        <ExternalLink size={16} className="group-hover/btn:-translate-y-0.5 group-hover/btn:translate-x-0.5 transition-transform" />
+                      )}
+                      {((project as any).liveUrl || '').includes('github.com') ? 'View GitHub' : 'See Site'}
                     </button>
+                    
+                    {/* View Case Study Button */}
+                    {(project as any).caseStudySlug && (
+                      <Link
+                        to={`/case-study/${(project as any).caseStudySlug}`}
+                        onClick={(e) => e.stopPropagation()}
+                        className="flex items-center gap-2 px-4 py-2 bg-zinc-900 text-[#22C55E] border border-[#22C55E]/30 hover:bg-[#22C55E]/10 rounded-lg text-sm font-medium transition-all group/btn z-20"
+                      >
+                        <BookOpen size={16} className="group-hover/btn:scale-110 transition-transform" />
+                        Case Study
+                      </Link>
+                    )}
                     
                     {/* View Screenshots Button */}
                     {(project as any).screenshots && (project as any).screenshots.length > 0 && (

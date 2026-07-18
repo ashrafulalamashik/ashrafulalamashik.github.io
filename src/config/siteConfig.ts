@@ -277,7 +277,8 @@ export const siteConfig = {
 ]
     },
     {
-      "title": "Design CSS Inspector",
+      "title": "Design Inspector — Glass Edition",
+      "caseStudySlug": "design-inspector",
       "category": "Chrome Extension",
       "liveUrl": "https://github.com/ashrafulalamashik/design-css-inspector",
       "description": "Chrome Extension to inspect CSS designs, colors, typography, and spacing on any web page. Easily copy CSS properties and analyze web designs.",
