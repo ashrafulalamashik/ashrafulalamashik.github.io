@@ -169,9 +169,7 @@ export const siteConfig = {
       "caseStudySlug": "future-shop",
       "image": "/assets/screenshots/future-shop/mockup.png",
       "screenshots": [
-        "/assets/screenshots/future-shop/mockup.png"
-      ],
-      "screenshots": [
+        "/assets/screenshots/future-shop/mockup.png",
         "/assets/screenshots/future-shop/Homepage.png",
         "/assets/screenshots/future-shop/Categories.png",
         "/assets/screenshots/future-shop/admin Products.png",
