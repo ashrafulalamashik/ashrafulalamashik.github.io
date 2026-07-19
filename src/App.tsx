@@ -12,10 +12,7 @@ import {
   Linkedin,
   Menu,
   X,
-  Star,
-  TrendingUp,
-  Users,
-  Award,
+
   Briefcase,
   Calendar,
   MapPin,
